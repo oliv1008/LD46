@@ -25,7 +25,9 @@ func delete_ressources_per_tick(type: int, user):
 func _on_FoodTimer_timeout():
 	foods += food_per_tick
 	print("Quantité de food : ", foods)
+	Events.emit_signal("new_ressources_value", Events.RessourcesType.food, foods)
 
 func _on_MaterialTimer_timeout():
 	bones += bone_per_tick
 	print("Quantité de bone : ", bones)
+	Events.emit_signal("new_ressources_value", Events.RessourcesType.bone, bones)

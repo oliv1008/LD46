@@ -1,37 +1,181 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=22 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://assets/Graphics/Character White/Character2.png" type="Texture" id=1]
 [ext_resource path="res://src/Monster/Monster.gd" type="Script" id=2]
+[ext_resource path="res://src/HUD/Hp bar.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/Graphics/Character White/Character Profil R.png" type="Texture" id=4]
+[ext_resource path="res://assets/Graphics/Character White/Character Death.png" type="Texture" id=5]
+[ext_resource path="res://assets/Graphics/Character White/Character Stand.png" type="Texture" id=6]
+[ext_resource path="res://assets/Graphics/Character White/Character Profil L2.png" type="Texture" id=7]
+[ext_resource path="res://assets/Graphics/Character White/Character Back2.png" type="Texture" id=8]
+[ext_resource path="res://assets/Graphics/Character White/Character Profil L.png" type="Texture" id=9]
+[ext_resource path="res://assets/Graphics/Character White/Character.png" type="Texture" id=10]
+[ext_resource path="res://assets/Graphics/Character White/Character Profil R2.png" type="Texture" id=11]
+[ext_resource path="res://assets/Graphics/Character White/Character Back.png" type="Texture" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 31.3112, 31.0867 )
+extents = Vector2( 21.1717, 18.4472 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 1 ) ],
+"frames": [ ExtResource( 10 ), ExtResource( 6 ), ExtResource( 1 ), ExtResource( 8 ), ExtResource( 12 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 11 ), ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
+[sub_resource type="Animation" id=4]
+resource_name = "die"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 9 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "die"
+} ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "iddle"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "moveDown"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 2 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "moveLeft"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 5, 6 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "moveRight"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 7, 8 ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "moveUp"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 3, 4 ]
+}
+
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 31.6933, 31.6436 )
+extents = Vector2( 21.1717, 19.4739 )
 
 [node name="Monster" type="KinematicBody2D"]
+position = Vector2( 0, -0.377365 )
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
+
+[node name="Hp bar" parent="." instance=ExtResource( 3 )]
+margin_left = -25.0
+margin_top = -35.0
+margin_right = -25.0
+margin_bottom = -35.0
+rect_scale = Vector2( 0.5, 0.5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.2, 0.2 )
 frames = SubResource( 2 )
+frame = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/die = SubResource( 4 )
+anims/iddle = SubResource( 5 )
+anims/moveDown = SubResource( 6 )
+anims/moveLeft = SubResource( 7 )
+anims/moveRight = SubResource( 8 )
+anims/moveUp = SubResource( 9 )
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 3 )
+
+[node name="HpDecay" type="Timer" parent="."]
+autostart = true
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_Area2D_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_Area2D_mouse_exited"]
+[connection signal="timeout" from="HpDecay" to="." method="_on_HpDecay_timeout"]
