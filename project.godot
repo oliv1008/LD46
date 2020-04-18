@@ -26,6 +26,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Events="*res://singleton/Events.gd"
+Data="*res://singleton/Data.gd"
 
 [display]
 

@@ -23,7 +23,8 @@ func _physics_process(delta):
 			build_button.disabled = false
 
 func _on_BuildButton_pressed():
-	barrack._on_Weapon_built(Events.WeaponChoices.SPEAR)
+	if barrack != null:
+		barrack._on_Weapon_built(Events.WeaponChoices.SPEAR)
 
 
 func _on_close_pressed():

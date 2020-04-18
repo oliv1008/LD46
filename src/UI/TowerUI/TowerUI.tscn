@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/UI/TowerUI/TowerUI.gd" type="Script" id=1]
+
+[node name="TowerUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+margin_right = 227.0
+margin_bottom = 181.0
+
+[node name="close" type="Button" parent="."]
+margin_left = 219.104
+margin_top = -9.77413
+margin_right = 238.104
+margin_bottom = 10.2259
+text = "x"
+
+[node name="ButtonUpgrade" type="Button" parent="."]
+margin_left = 86.3382
+margin_top = 78.1931
+margin_right = 151.338
+margin_bottom = 98.1931
+text = "Upgrade"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="ButtonUpgrade" to="." method="_on_ButtonUpgrade_pressed"]

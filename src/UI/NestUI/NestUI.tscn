@@ -1,0 +1,63 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://src/UI/NestUI/NestUI.gd" type="Script" id=2]
+
+[node name="NestUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+margin_right = 388.0
+margin_bottom = 233.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 7.0
+margin_top = 30.0
+margin_right = 381.0
+margin_bottom = 226.0
+custom_constants/separation = 80
+alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="HBoxContainer"]
+margin_left = 83.0
+margin_right = 147.0
+margin_bottom = 196.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+margin_left = 227.0
+margin_right = 291.0
+margin_bottom = 196.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonMate" type="Button" parent="."]
+margin_left = 131.781
+margin_top = 175.647
+margin_right = 264.781
+margin_bottom = 204.647
+text = "MATE"
+
+[node name="close" type="Button" parent="."]
+margin_left = 376.89
+margin_top = -6.30252
+margin_right = 396.89
+margin_bottom = 13.6975
+text = "X"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="close" to="." method="_on_close_pressed"]
