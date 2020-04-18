@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/HUD/Hp bar.gd" type="Script" id=1]
+
+[node name="Hp bar" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1818.0
+margin_bottom = -1060.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="BlackBackground" type="ColorRect" parent="."]
+margin_right = 102.0
+margin_bottom = 20.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hp" type="ColorRect" parent="."]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 101.0
+margin_bottom = 19.0
+color = Color( 0.0784314, 1, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

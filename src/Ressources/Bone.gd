@@ -15,18 +15,6 @@ func _physics_process(delta):
 		previous_user = user
 		move = true
 
-	if move == true:
-		user.currentPos = user.position
-		bonePosition = position
-		user.posToMove = bonePosition - user.currentPos
-		if not abs(user.posToMove.x) < 5 && not abs(user.posToMove.y) < 5:
-			user.look_at(bonePosition)
-			user.velocity = user.posToMove.normalized() * user.speed
-			user.move_and_slide(user.velocity, Vector2(0, 0))
-			#user.move_and_collide(user.velocity * delta)
-		else:
-			move = false
-
 	if user != null && is_generating == false && move == false:
 		Events.emit_signal("new_ressources_generator", Events.RessourcesType.bone, user)
 		is_generating = true
@@ -53,3 +41,5 @@ func _on_user_levelup():
 	Events.emit_signal("delete_ressources_generator", Events.RessourcesType.bone, user)
 	user.levelup_miner()
 	Events.emit_signal("new_ressources_generator", Events.RessourcesType.bone, user)
+
+
