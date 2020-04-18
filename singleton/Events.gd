@@ -1,16 +1,12 @@
+# Autoloaded singleton that holds signals that would be troublesome to wire in a
+# local parent or a scene owner.
+# 
+# This keeps objects passed through setup functions or unsafe accessors at a
+# lower count, and can be replaced with simpler `Events.connect` calls.
+
 extends Node
 
+signal new_ressources_generator(type, user)
+signal delete_ressources_generator(type)
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+enum RessourcesType {food, bone}
