@@ -26,8 +26,7 @@ var mousePos = Vector2()
 var velocity = Vector2()
 var posToMove = Vector2()
 var batPosition = Vector2()
-
-var activated # = true si la souris est sur le monstre, false sinon
+var isMoving
 
 var activity = null
 
@@ -38,16 +37,11 @@ func _ready():
 	iddle()
 
 func _physics_process(delta):
-	if Input.is_action_just_pressed("BUTTON_LEFT") && activated == true:
-		Data.selected = self
-		
 	if activity != null:
-		if activity.move == true:
+		if isMoving == true:
 			currentPos = position
 			batPosition = activity.position
 			posToMove = batPosition - currentPos
-			print(abs(posToMove.x))
-			print(abs(posToMove.y))
 			if abs(posToMove.x) > 5 || abs(posToMove.y) > 5:
 				var angle = posToMove.normalized()
 				velocity = posToMove.normalized() * speed
@@ -61,22 +55,22 @@ func _physics_process(delta):
 				if angle.y > sqrt(2)/2 && angle.x > -sqrt(2)/2 && angle.x < sqrt(2)/2:
 					go_down()
 			else:
-				activity.move = false
+				isMoving = false
+				activity.enter(self)
 
 	if activity == null && hp > 0:
 		iddle()
-
-func _on_Area2D_mouse_entered():
-	activated = true
-
-func _on_Area2D_mouse_exited():
-	activated = false
-	
+		
+func _on_Area2D_input_event(viewport, event, shape_idx):
+	if (event is InputEventMouseButton && event.pressed):
+		Data.selected = self
+		print("Data.selected = ", Data.selected)
 
 func changeActivity(newActivity):
 	if activity != null:
-		activity.user = null
+		activity.leave(self)
 	activity = newActivity
+	isMoving = true
 
 func levelup_woodcutter():
 	woodcutter_multiplier += 0.15
@@ -95,7 +89,7 @@ func levelup_soldier():
 
 
 func _on_HpDecay_timeout():
-	hp -= 20
+	hp -= 1
 	if(hp <= 0):
 		var animationPlayer = $AnimationPlayer
 		animationPlayer.play("die")

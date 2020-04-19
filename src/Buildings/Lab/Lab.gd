@@ -31,5 +31,3 @@ func _on_Area2D_input_event(viewport, event, shape_idx):
 	if (is_build && event is InputEventMouseButton && event.pressed):
 		UI.init(self)
 		UI.visible = true
-		pass
-
