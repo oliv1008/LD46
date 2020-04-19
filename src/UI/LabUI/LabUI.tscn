@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://src/UI/LabUI/LabUI.gd" type="Script" id=2]
+[ext_resource path="res://src/UI/ListUI/ListMonsterLabUI/ListMonsterLabUI.tscn" type="PackedScene" id=3]
 
 [node name="LabUI" type="Control"]
 anchor_right = 1.0
@@ -10,6 +11,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+ListMonsterLabUI = ExtResource( 3 )
 
 [node name="TabContainer" type="TabContainer" parent="."]
 margin_right = 385.0

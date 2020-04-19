@@ -5,7 +5,7 @@ onready var research2_button = $TabContainer/ScrollContainer/VBoxContainer/HBoxC
 
 onready var scientists_list = $TabContainer/ScientistsContainer
 
-var ListMonsterLabUI = preload("res://src/UI/ListMonsterUI/ListMonsterLabUI/ListMonsterLabUI.tscn")
+export (PackedScene) var ListMonsterLabUI
 
 var lab
 

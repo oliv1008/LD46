@@ -27,16 +27,19 @@ var velocity = Vector2()
 var posToMove = Vector2()
 var batPosition = Vector2()
 
-var isMoving
+var isMoving = false
 
 var activity = null
 
 func _ready():
 	randomize()
-	$Hovering.modulate = Color(255,255,255,1)
+	get_node("Hp bar").init(self)
+	$Hovering.modulate = Color(255,255,255,0.5)
 	$AnimatedSprite.modulate = Color(random02[randi() % random02.size()], random02[randi() % random02.size()], random02[randi() % random02.size()], 1)
 	monster_name = names[randi() % names.size()]
 	Data.monster_list.append(self)
+	Events.emit_signal("new_monster")
+	Events.connect("losing_hp", self, "_on_HpDecay")
 	iddle()
 
 func _physics_process(delta):
@@ -75,7 +78,7 @@ func _physics_process(delta):
 
 func _on_Area2D_input_event(viewport, event, shape_idx):
 	#get_tree().set_input_as_handled()
-	if (event is InputEventMouseButton && event.pressed):
+	if (event is InputEventMouseButton && event.pressed): #&& isMoving == false:
 		Data.selected = self
 
 func changeActivity(newActivity):
@@ -100,7 +103,7 @@ func levelup_soldier():
 	soldier_multiplier += 0.15
 
 
-func _on_HpDecay_timeout():
+func _on_HpDecay():
 	hp -= 1
 	if(hp <= 0):
 		var animationPlayer = $AnimationPlayer
@@ -110,7 +113,10 @@ func get_hit():
 	hp -= 5
 
 func die():
-	changeActivity(null)
+	Events.emit_signal("monster_death")
+	#changeActivity(null)
+	if activity != null:
+		activity.on_monster_leave(self)
 	Data.monster_list.remove(Data.monster_list.find(self))
 	queue_free()
 	

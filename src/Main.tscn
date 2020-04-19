@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/Main.gd" type="Script" id=1]
 [ext_resource path="res://src/Buildings/Tree/Tree.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://src/UI/HUD/HUD.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/Graphics/Map PS.png" type="Texture" id=6]
 [ext_resource path="res://src/Buildings/Lab/Lab.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/Buildings/Nest/Nest.tscn" type="PackedScene" id=8]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
@@ -15,6 +16,9 @@ script = ExtResource( 1 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 6 )
 centered = false
+
+[node name="HpDecay" type="Timer" parent="."]
+autostart = true
 
 [node name="FoodTimer" type="Timer" parent="."]
 autostart = true
@@ -46,11 +50,11 @@ position = Vector2( 268.962, 412.651 )
 [node name="Tree8" parent="." instance=ExtResource( 2 )]
 position = Vector2( 217.475, 305.757 )
 
-[node name="Bone" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1681.99, 637.72 )
-
 [node name="Bone2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1288.28, 701.287 )
+
+[node name="Bone9" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1694.29, 594.659 )
 
 [node name="Bone3" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1405.16, 584.406 )
@@ -73,6 +77,9 @@ position = Vector2( 1142.69, 736.147 )
 [node name="Lab" parent="." instance=ExtResource( 7 )]
 position = Vector2( 1021.35, 501.221 )
 
+[node name="Nest" parent="." instance=ExtResource( 8 )]
+position = Vector2( 650.075, 624.075 )
+
 [node name="Monster" parent="." instance=ExtResource( 3 )]
 position = Vector2( 798.694, 699.927 )
 
@@ -80,8 +87,6 @@ position = Vector2( 798.694, 699.927 )
 position = Vector2( 706.686, 257.034 )
 
 [node name="HUD" parent="." instance=ExtResource( 5 )]
-
-[node name="Bone" parent="." instance=ExtResource( 4 )]
-position = Vector2( 550.174, 432.721 )
+[connection signal="timeout" from="HpDecay" to="." method="_on_HpDecay_timeout"]
 [connection signal="timeout" from="FoodTimer" to="." method="_on_FoodTimer_timeout"]
 [connection signal="timeout" from="MaterialTimer" to="." method="_on_MaterialTimer_timeout"]

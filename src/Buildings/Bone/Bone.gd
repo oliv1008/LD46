@@ -11,14 +11,17 @@ func _ready():
 	randomize()
 	$Sprite.texture = bones_sprites[randi() % bones_sprites.size()] 
 	$Sprite2.texture = $Sprite.texture
-	$Sprite2.modulate = Color(255,255,255,1)
+	$Sprite2.modulate = Color(255,255,255,0.5)
 	
 func enter(user_param):
 	if is_generating == false:
 		user = user_param
 		Events.emit_signal("new_ressources_generator", Events.RessourcesType.bone, user_param)
 		is_generating = true
-	
+
+func on_monster_leave(user_param):
+	user.changeActivity(null)
+
 func leave(_user_param):
 	is_generating = false
 	Events.emit_signal("delete_ressources_generator", Events.RessourcesType.bone, user)

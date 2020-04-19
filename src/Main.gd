@@ -6,12 +6,17 @@ var bones = 0
 var food_per_tick = 0
 var bone_per_tick = 0
 
+var food_needed_per_tick = 1
+var food_needed_per_person = 0.5
+
 onready var lab = $Lab
 
 func _ready():
 	SoundManager.play_bgm("Animal crossing.wav")
 	Events.connect("new_ressources_generator", self, "add_ressources_per_tick")
 	Events.connect("delete_ressources_generator", self, "delete_ressources_per_tick") 
+	Events.connect("new_monster", self, "on_new_monster")
+	Events.connect("monster_death", self, "on_monster_death")
 
 func add_ressources_per_tick(type: int, user):
 	if (type == Events.RessourcesType.food):
@@ -28,6 +33,15 @@ func delete_ressources_per_tick(type: int, user):
 	if (type == Events.RessourcesType.bone):
 		bone_per_tick -= 1*user.miner_multiplier
 		Events.emit_signal("new_ressources_per_sec_value", Events.RessourcesType.bone, bone_per_tick)
+
+func on_new_monster():
+	print("nouveau monstre !")
+	food_needed_per_tick += food_needed_per_person
+	Events.emit_signal("new_food_needed_per_tick", food_needed_per_tick)
+	
+func on_monster_death():
+	food_needed_per_tick -= food_needed_per_person
+	Events.emit_signal("new_food_needed_per_tick", food_needed_per_tick)
 
 func _on_FoodTimer_timeout():
 	foods += food_per_tick
@@ -46,3 +60,12 @@ func _on_Area2D_input_event(viewport, event, shape_idx):
 		if Data.selected != null:
 			Data.selected.come_here(get_global_mouse_position())
 			#Data.selected = null
+
+
+func _on_HpDecay_timeout():
+	if foods < food_needed_per_tick:
+		Events.emit_signal("losing_hp")
+	else:
+		foods -= food_needed_per_tick
+		Events.emit_signal("new_ressources_value", Events.RessourcesType.food, foods)
+	

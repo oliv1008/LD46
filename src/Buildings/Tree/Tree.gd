@@ -5,7 +5,7 @@ var is_generating = false
 var treePosition = Vector2()
 
 func _ready():
-	$Sprite2.modulate = Color(255,255,255,1)
+	$Sprite2.modulate = Color(255,255,255, 0.5)
 	
 func enter(user_param):
 	if is_generating == false:
@@ -17,6 +17,9 @@ func leave(_user_param):
 	is_generating = false
 	Events.emit_signal("delete_ressources_generator", Events.RessourcesType.food, user)
 	user = null
+
+func on_monster_leave(user_param):
+	user.changeActivity(null)
 
 func _on_XP_timeout():
 	if user != null && is_generating == true:

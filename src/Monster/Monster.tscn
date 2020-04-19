@@ -147,6 +147,7 @@ extents = Vector2( 23.2839, 20.3981 )
 "monsters",
 ]]
 position = Vector2( 0, -0.377365 )
+collision_mask = 2
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
@@ -171,6 +172,7 @@ texture = ExtResource( 12 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 2, 2 )
 frames = SubResource( 2 )
+frame = 9
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/die = SubResource( 3 )
@@ -186,9 +188,6 @@ anims/moveUp = SubResource( 8 )
 position = Vector2( 0.475655, -0.237823 )
 shape = SubResource( 9 )
 
-[node name="HpDecay" type="Timer" parent="."]
-autostart = true
-
 [node name="Selected" type="Sprite" parent="."]
 visible = false
 position = Vector2( 0, -60 )
@@ -197,4 +196,3 @@ texture = ExtResource( 5 )
 [connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_Area2D_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_Area2D_mouse_exited"]
-[connection signal="timeout" from="HpDecay" to="." method="_on_HpDecay_timeout"]
