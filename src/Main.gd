@@ -9,7 +9,7 @@ var bone_per_tick = 0
 onready var lab = $Lab
 
 func _ready():
-	SoundManager.play_bgm("Animal crossing.mp3")
+	SoundManager.play_bgm("Animal crossing.wav")
 	Events.connect("new_ressources_generator", self, "add_ressources_per_tick")
 	Events.connect("delete_ressources_generator", self, "delete_ressources_per_tick") 
 

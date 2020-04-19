@@ -39,6 +39,8 @@ func _on_user_levelup():
 func _on_Area2D_input_event(viewport, event, shape_idx):
 	#get_tree().set_input_as_handled()
 	if (event is InputEventMouseButton && event.pressed):
+		SoundManager.play_se("Mining.ogg")
+		$Stop_effect.start()
 		if (Data.selected == null && user != null):
 			#shoot up UI
 			pass
@@ -46,8 +48,13 @@ func _on_Area2D_input_event(viewport, event, shape_idx):
 			Data.selected.changeActivity(self)
 			Data.selected = null
 		
+		
 func _on_Area2D_mouse_entered():
 	$Sprite2.show() 
 
 func _on_Area2D_mouse_exited():
 	$Sprite2.hide()
+
+
+func _on_Stop_effect_timeout():
+	SoundManager.stop_se("Mining.ogg")
