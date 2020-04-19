@@ -21,6 +21,8 @@ margin_left = -34.5831
 margin_top = -22.1548
 margin_right = 35.4169
 margin_bottom = 22.8452
+disabled = true
+text = "Build"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -35,5 +37,8 @@ visible = false
 
 [node name="PositionUI" type="Position2D" parent="."]
 position = Vector2( 125.359, -107.266 )
+
+[node name="ExitPosition" type="Position2D" parent="."]
+position = Vector2( -2.45547, 122.774 )
 [connection signal="pressed" from="ButtonBuild" to="." method="_on_ButtonBuild_pressed"]
 [connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]

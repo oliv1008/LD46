@@ -17,6 +17,15 @@ func _ready():
 	Events.connect("delete_ressources_generator", self, "delete_ressources_per_tick") 
 	Events.connect("new_monster", self, "on_new_monster")
 	Events.connect("monster_death", self, "on_monster_death")
+	Events.connect("use_bones", self, "on_use_bones")
+	
+func _physics_process(delta):
+	if Data.selected != null:
+		$MonsterUI.init(Data.selected)
+		$MonsterUI.refresh()
+		$MonsterUI.visible = true
+	else:
+		$MonsterUI.visible = false
 
 func add_ressources_per_tick(type: int, user):
 	if (type == Events.RessourcesType.food):
@@ -61,7 +70,6 @@ func _on_Area2D_input_event(viewport, event, shape_idx):
 			Data.selected.come_here(get_global_mouse_position())
 			#Data.selected = null
 
-
 func _on_HpDecay_timeout():
 	if foods < food_needed_per_tick:
 		Events.emit_signal("losing_hp")
@@ -69,3 +77,6 @@ func _on_HpDecay_timeout():
 		foods -= food_needed_per_tick
 		Events.emit_signal("new_ressources_value", Events.RessourcesType.food, foods)
 	
+func on_use_bones(value):
+	bones -= value
+	Events.emit_signal("new_ressources_value", Events.RessourcesType.bone, bones)

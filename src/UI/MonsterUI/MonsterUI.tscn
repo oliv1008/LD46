@@ -1,0 +1,83 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/UI/MonsterUI/MonsterUI.gd" type="Script" id=1]
+
+[node name="MonsterUI" type="Panel"]
+margin_right = 483.0
+margin_bottom = 268.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelNom" type="Label" parent="."]
+margin_left = 261.25
+margin_top = 18.6493
+margin_right = 331.25
+margin_bottom = 32.6493
+size_flags_horizontal = 4
+text = "NOM NOM	"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 484.0
+margin_bottom = 266.0
+custom_constants/separation = 30
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+margin_top = 93.0
+margin_right = 80.0
+margin_bottom = 173.0
+rect_min_size = Vector2( 80, 80 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 110.0
+margin_right = 484.0
+margin_bottom = 266.0
+size_flags_horizontal = 3
+custom_constants/separation = 22
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelFoodHarvesterLvl" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_top = 54.0
+margin_right = 374.0
+margin_bottom = 68.0
+text = "Food harvester lvl. : XX"
+
+[node name="LabelBoneHarvesterLvl" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_top = 90.0
+margin_right = 374.0
+margin_bottom = 104.0
+text = "Bone harvester lvl. : XX"
+
+[node name="LabelSoldierLvl" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_top = 126.0
+margin_right = 374.0
+margin_bottom = 140.0
+text = "Soldier lvl. : XX"
+
+[node name="LabelScientistLvl" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_top = 162.0
+margin_right = 374.0
+margin_bottom = 176.0
+text = "Scientist lvl. : XX"
+
+[node name="LabelRomanticLvl" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_top = 198.0
+margin_right = 374.0
+margin_bottom = 212.0
+text = "Romantic lvl. ; XX"

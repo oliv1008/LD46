@@ -2,24 +2,18 @@
 
 [ext_resource path="res://src/UI/ListUI/ListMonsterLabUI/ListMonsterLabUI.gd" type="Script" id=1]
 
-[node name="ListMonsterLabUI" type="Control"]
+[node name="ListMonsterLabUI" type="HBoxContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_right = -1710.0
+margin_bottom = -1000.0
+custom_constants/separation = 20
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_right = 235.0
-margin_bottom = 80.0
-custom_constants/separation = 40
-alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="."]
 margin_right = 80.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 80, 80 )
@@ -30,9 +24,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LabelContainer" type="VBoxContainer" parent="HBoxContainer"]
-margin_left = 120.0
-margin_right = 218.0
+[node name="LabelContainer" type="VBoxContainer" parent="."]
+margin_left = 100.0
+margin_right = 198.0
 margin_bottom = 80.0
 custom_constants/separation = 14
 alignment = 1
@@ -40,22 +34,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NameLabel" type="Label" parent="HBoxContainer/LabelContainer"]
+[node name="NameLabel" type="Label" parent="LabelContainer"]
 margin_top = 19.0
 margin_right = 98.0
 margin_bottom = 33.0
 text = "NOMNOM"
 
-[node name="ScientistLvlLabel" type="Label" parent="HBoxContainer/LabelContainer"]
+[node name="ScientistLvlLabel" type="Label" parent="LabelContainer"]
 margin_top = 47.0
 margin_right = 98.0
 margin_bottom = 61.0
 text = "Scientist lvl. XX"
 
-[node name="LeaveButton" type="Button" parent="HBoxContainer"]
-margin_left = 258.0
+[node name="LeaveButton" type="Button" parent="."]
+margin_left = 218.0
 margin_top = 30.0
-margin_right = 278.0
+margin_right = 238.0
 margin_bottom = 50.0
 size_flags_horizontal = 4
 size_flags_vertical = 4

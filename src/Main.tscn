@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/Main.gd" type="Script" id=1]
 [ext_resource path="res://src/Buildings/Tree/Tree.tscn" type="PackedScene" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://assets/Graphics/Map PS.png" type="Texture" id=6]
 [ext_resource path="res://src/Buildings/Lab/Lab.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/Buildings/Nest/Nest.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/Buildings/Barrack/Barrack.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/UI/MonsterUI/MonsterUI.tscn" type="PackedScene" id=10]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
@@ -80,6 +82,9 @@ position = Vector2( 1021.35, 501.221 )
 [node name="Nest" parent="." instance=ExtResource( 8 )]
 position = Vector2( 650.075, 624.075 )
 
+[node name="Barrack" parent="." instance=ExtResource( 9 )]
+position = Vector2( 1305.9, 335.591 )
+
 [node name="Monster" parent="." instance=ExtResource( 3 )]
 position = Vector2( 798.694, 699.927 )
 
@@ -87,6 +92,12 @@ position = Vector2( 798.694, 699.927 )
 position = Vector2( 706.686, 257.034 )
 
 [node name="HUD" parent="." instance=ExtResource( 5 )]
+
+[node name="MonsterUI" parent="." instance=ExtResource( 10 )]
+margin_left = 29.2819
+margin_top = 787.357
+margin_right = 512.282
+margin_bottom = 1055.36
 [connection signal="timeout" from="HpDecay" to="." method="_on_HpDecay_timeout"]
 [connection signal="timeout" from="FoodTimer" to="." method="_on_FoodTimer_timeout"]
 [connection signal="timeout" from="MaterialTimer" to="." method="_on_MaterialTimer_timeout"]

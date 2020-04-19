@@ -20,12 +20,6 @@ func _on_ressources_values_changed(type, new_value):
 			$ButtonBuild.disabled = false
 		else:
 			$ButtonBuild.disabled = true
-
-func upgrade():
-	pass
-	
-func _on_Research():
-	pass
 	
 func enter(user_param):
 	monsters_stand_by.append(user_param)
@@ -36,7 +30,6 @@ func enter(user_param):
 
 func leave(_user_param):
 	monsters_stand_by.remove(monsters_stand_by.find(_user_param))
-	#UI.on_monster_leave(_user_param)
 	research_value -= 1 + (0.15 * _user_param.scientist_level) 
 	_user_param.position = $ExitPosition.global_position
 	_user_param.visible = true
