@@ -5,8 +5,8 @@
 [ext_resource path="res://src/Monster/Monster.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/Buildings/Bone/Bone.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/UI/HUD/HUD.tscn" type="PackedScene" id=5]
-[ext_resource path="res://src/Buildings/Lab/Lab.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/Graphics/Map PS.png" type="Texture" id=6]
+[ext_resource path="res://src/Buildings/Lab/Lab.tscn" type="PackedScene" id=7]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
@@ -24,12 +24,6 @@ autostart = true
 
 [node name="Tree" parent="." instance=ExtResource( 2 )]
 position = Vector2( 256.204, 185.138 )
-
-[node name="Lab" parent="." instance=ExtResource( 7 )]
-position = Vector2( 1226.4, 704.117 )
-
-[node name="Monster2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 706.686, 257.034 )
 
 [node name="Tree2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 414.099, 419.394 )
@@ -76,8 +70,14 @@ position = Vector2( 1431.82, 768.955 )
 [node name="Bone8" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1142.69, 736.147 )
 
+[node name="Lab" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1021.35, 501.221 )
+
 [node name="Monster" parent="." instance=ExtResource( 3 )]
 position = Vector2( 798.694, 699.927 )
+
+[node name="Monster2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 706.686, 257.034 )
 
 [node name="HUD" parent="." instance=ExtResource( 5 )]
 

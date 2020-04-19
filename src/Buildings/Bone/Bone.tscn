@@ -1,6 +1,5 @@
 [gd_scene load_steps=4 format=2]
 
-
 [ext_resource path="res://src/Buildings/Bone/Bone.gd" type="Script" id=1]
 [ext_resource path="res://assets/Graphics/batiments/os 25.png" type="Texture" id=2]
 
@@ -8,7 +7,7 @@
 extents = Vector2( 33.1329, 32.9335 )
 
 [node name="Bone" type="Node2D"]
-script = ExtResource( 2 )
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }

@@ -18,12 +18,12 @@ func init(lab_param):
 	rect_position = lab_param.get_node("PositionUI").position
 
 func on_monster_leave(monster):
-	lab.leave(monster)
+	monster.changeActivity(null)
 	reload_monster_list()
 
 func reload_monster_list():
-	for monster in scientists_list.get_children():
-		monster.queue_free()
+	for monster_info in scientists_list.get_children():
+		monster_info.queue_free()
 	for monster in lab.monsters_stand_by:
 		var list_monster_instance = ListMonsterLabUI.instance()
 		list_monster_instance.init(monster, self)

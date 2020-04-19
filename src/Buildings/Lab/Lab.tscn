@@ -40,5 +40,8 @@ position = Vector2( 125.434, -118.104 )
 
 [node name="LabUI" parent="." instance=ExtResource( 3 )]
 visible = false
+
+[node name="ExitPosition" type="Position2D" parent="."]
+position = Vector2( -1.75812, 124.825 )
 [connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]
 [connection signal="pressed" from="ButtonBuild" to="." method="_on_ButtonBuild_pressed"]

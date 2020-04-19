@@ -6,7 +6,7 @@ onready var UI = $LabUI
 var is_build: bool = false
 
 var monsters_stand_by = []
-var max_monsters_quantity = 1
+var max_monsters_quantity = 2
 
 var research_value = 0
 
@@ -32,11 +32,15 @@ func _on_Research():
 func enter(user_param):
 	monsters_stand_by.append(user_param)
 	research_value += 0.25 + (0.5 * user_param.scientist_level) 
+	user_param.position = Vector2(0, 0)
 	user_param.visible = false
+	UI.reload_monster_list()
 
 func leave(_user_param):
+	print("_user_param = ", _user_param)
 	monsters_stand_by.remove(monsters_stand_by.find(_user_param))
 	research_value -= 0.25 + (0.5 * _user_param.scientist_level) 
+	_user_param.position = $ExitPosition.global_position
 	_user_param.visible = true
 
 func _on_ButtonBuild_pressed():
