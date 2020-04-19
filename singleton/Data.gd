@@ -1,3 +1,4 @@
 extends Node
 
-var selected
+var selected 
+var monster_list = []

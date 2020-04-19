@@ -3,7 +3,16 @@ extends Node2D
 var user 
 var is_generating = false
 var bonePosition = Vector2()
+var bone1 = load("res://assets/Graphics/batiments/os 25.png")
+var bone2 = load("res://assets/Graphics/batiments/os 25 2.png")
+var bones_sprites = [bone1, bone2]
 
+func _ready():
+	randomize()
+	$Sprite.texture = bones_sprites[randi() % bones_sprites.size()] 
+	$Sprite2.texture = $Sprite.texture
+	$Sprite2.modulate = Color(255,255,255,1)
+	
 func enter(user_param):
 	if is_generating == false:
 		user = user_param
@@ -28,6 +37,7 @@ func _on_user_levelup():
 	Events.emit_signal("new_ressources_generator", Events.RessourcesType.bone, user)
 
 func _on_Area2D_input_event(viewport, event, shape_idx):
+	#get_tree().set_input_as_handled()
 	if (event is InputEventMouseButton && event.pressed):
 		if (Data.selected == null && user != null):
 			#shoot up UI
@@ -36,3 +46,8 @@ func _on_Area2D_input_event(viewport, event, shape_idx):
 			Data.selected.changeActivity(self)
 			Data.selected = null
 		
+func _on_Area2D_mouse_entered():
+	$Sprite2.show() 
+
+func _on_Area2D_mouse_exited():
+	$Sprite2.hide()

@@ -26,14 +26,17 @@ var mousePos = Vector2()
 var velocity = Vector2()
 var posToMove = Vector2()
 var batPosition = Vector2()
+
 var isMoving
 
 var activity = null
 
 func _ready():
 	randomize()
+	$Hovering.modulate = Color(255,255,255,1)
 	$AnimatedSprite.modulate = Color(random02[randi() % random02.size()], random02[randi() % random02.size()], random02[randi() % random02.size()], 1)
 	monster_name = names[randi() % names.size()]
+	Data.monster_list.append(self)
 	iddle()
 
 func _physics_process(delta):
@@ -58,13 +61,22 @@ func _physics_process(delta):
 				isMoving = false
 				activity.enter(self)
 
-	if activity == null && hp > 0:
+	if isMoving == false && hp > 0:
 		iddle()
-		
+
+	$Hovering.texture = $AnimatedSprite.frames.get_frame("default", $AnimatedSprite.frame)
+	
+	#Peut causer des lags, bcp de fonctions pour rien
+	if Data.selected == self:
+		$Selected.show()
+	else:
+		$Selected.hide()
+
+
 func _on_Area2D_input_event(viewport, event, shape_idx):
+	#get_tree().set_input_as_handled()
 	if (event is InputEventMouseButton && event.pressed):
 		Data.selected = self
-		print("Data.selected = ", Data.selected)
 
 func changeActivity(newActivity):
 	if activity != null:
@@ -93,9 +105,13 @@ func _on_HpDecay_timeout():
 	if(hp <= 0):
 		var animationPlayer = $AnimationPlayer
 		animationPlayer.play("die")
-	
+
+func get_hit():
+	hp -= 5
+
 func die():
 	changeActivity(null)
+	Data.monster_list.remove(Data.monster_list.find(self))
 	queue_free()
 	
 func iddle():
@@ -117,3 +133,9 @@ func go_right():
 func go_down():
 	var animationPlayer = $AnimationPlayer
 	animationPlayer.play("moveDown")
+
+func _on_Area2D_mouse_entered():
+	$Hovering.show() 
+
+func _on_Area2D_mouse_exited():
+	$Hovering.hide()

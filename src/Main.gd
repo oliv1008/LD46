@@ -9,6 +9,7 @@ var bone_per_tick = 0
 onready var lab = $Lab
 
 func _ready():
+	SoundManager.play_bgm("Animal crossing.mp3")
 	Events.connect("new_ressources_generator", self, "add_ressources_per_tick")
 	Events.connect("delete_ressources_generator", self, "delete_ressources_per_tick") 
 
@@ -37,3 +38,11 @@ func _on_MaterialTimer_timeout():
 	bones += bone_per_tick
 	if bone_per_tick > 0:
 		Events.emit_signal("new_ressources_value", Events.RessourcesType.bone, bones)
+
+
+func _on_Area2D_input_event(viewport, event, shape_idx):
+	get_tree().set_input_as_handled()
+	if (event is InputEventMouseButton && event.pressed && Data.selected != null):
+		if Data.selected != null:
+			Data.selected.come_here(get_global_mouse_position())
+			#Data.selected = null
