@@ -1,24 +1,25 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
-[ext_resource path="res://assets/Graphics/Character White/Character2.png" type="Texture" id=1]
+[ext_resource path="res://assets/Graphics/Character White PS/Character 2.png" type="Texture" id=1]
 [ext_resource path="res://src/Monster/Monster.gd" type="Script" id=2]
 [ext_resource path="res://src/UI/HUD/Hp bar.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/Graphics/Character White/Character Profil R.png" type="Texture" id=4]
-[ext_resource path="res://assets/Graphics/Character White/Character Death.png" type="Texture" id=5]
-[ext_resource path="res://assets/Graphics/Character White/Character Stand.png" type="Texture" id=6]
-[ext_resource path="res://assets/Graphics/Character White/Character Profil L2.png" type="Texture" id=7]
-[ext_resource path="res://assets/Graphics/Character White/Character Back2.png" type="Texture" id=8]
-[ext_resource path="res://assets/Graphics/Character White/Character Profil L.png" type="Texture" id=9]
-[ext_resource path="res://assets/Graphics/Character White/Character.png" type="Texture" id=10]
-[ext_resource path="res://assets/Graphics/Character White/Character Profil R2.png" type="Texture" id=11]
-[ext_resource path="res://assets/Graphics/Character White/Character Back.png" type="Texture" id=12]
+[ext_resource path="res://assets/Graphics/Character White PS/Character Back 2.png" type="Texture" id=4]
+[ext_resource path="res://assets/Graphics/Icon/flèche rouge.png" type="Texture" id=5]
+[ext_resource path="res://assets/Graphics/Character White PS/Character Profile L 2.png" type="Texture" id=6]
+[ext_resource path="res://assets/Graphics/Character White PS/Character Profile R.png" type="Texture" id=7]
+[ext_resource path="res://assets/Graphics/Character White PS/Character Profile L.png" type="Texture" id=8]
+[ext_resource path="res://assets/Graphics/Character White PS/Character Profile R 2.png" type="Texture" id=9]
+[ext_resource path="res://assets/Graphics/Character White PS/Character Back.png" type="Texture" id=10]
+[ext_resource path="res://assets/Graphics/Character White PS/Character Death.png" type="Texture" id=11]
+[ext_resource path="res://assets/Graphics/Character White PS/Character.png" type="Texture" id=12]
+[ext_resource path="res://assets/Graphics/Character White PS/Character Stand.png" type="Texture" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 21.1717, 18.4472 )
+extents = Vector2( 23.9974, 19.6847 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 10 ), ExtResource( 6 ), ExtResource( 1 ), ExtResource( 8 ), ExtResource( 12 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 11 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 1 ), ExtResource( 4 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 11 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -140,9 +141,11 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 21.1717, 19.4739 )
+extents = Vector2( 23.2839, 20.3981 )
 
-[node name="Monster" type="KinematicBody2D"]
+[node name="Monster" type="KinematicBody2D" groups=[
+"monsters",
+]]
 position = Vector2( 0, -0.377365 )
 script = ExtResource( 2 )
 
@@ -153,13 +156,18 @@ margin_right = -25.0
 margin_bottom = -35.0
 rect_scale = Vector2( 0.5, 0.5 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
+[node name="Hovering" type="Sprite" parent="."]
+visible = false
+position = Vector2( 1, 1 )
+scale = Vector2( 2.5, 2.5 )
+texture = ExtResource( 12 )
+
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-scale = Vector2( 0.2, 0.2 )
+scale = Vector2( 2, 2 )
 frames = SubResource( 2 )
-frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/die = SubResource( 3 )
@@ -172,9 +180,18 @@ anims/moveUp = SubResource( 8 )
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 0.475655, -0.237823 )
 shape = SubResource( 9 )
 
 [node name="HpDecay" type="Timer" parent="."]
 autostart = true
+
+[node name="Selected" type="Sprite" parent="."]
+visible = false
+position = Vector2( 0, -60 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 5 )
 [connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_Area2D_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_Area2D_mouse_exited"]
 [connection signal="timeout" from="HpDecay" to="." method="_on_HpDecay_timeout"]

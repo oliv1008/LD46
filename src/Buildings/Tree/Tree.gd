@@ -4,7 +4,8 @@ var user = null
 var is_generating = false
 var treePosition = Vector2()
 
-#func _physics_process(delta):	
+func _ready():
+	$Sprite2.modulate = Color(255,255,255,1)
 	
 func enter(user_param):
 	if is_generating == false:
@@ -31,6 +32,7 @@ func _on_user_levelup():
 
 
 func _on_Area2D_input_event(_viewport, event, _shape_idx):
+	#get_tree().set_input_as_handled()
 	if (event is InputEventMouseButton && event.pressed && Data.selected != null):
 		if (Data.selected == null && user != null):
 			#shoot up UI
@@ -38,3 +40,10 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
 		elif (Data.selected != null && user == null):
 			Data.selected.changeActivity(self)
 			Data.selected = null
+
+
+func _on_Area2D_mouse_entered():
+	$Sprite2.show() 
+
+func _on_Area2D_mouse_exited():
+	$Sprite2.hide()

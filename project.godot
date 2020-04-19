@@ -28,14 +28,18 @@ config/icon="res://icon.png"
 
 Events="*res://singleton/Events.gd"
 Data="*res://singleton/Data.gd"
+SoundManager="*res://addons/sound_manager/module/SoundManager.tscn"
 
 [display]
 
 window/size/width=1920
 window/size/height=1080
-window/size/fullscreen=true
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "sound_manager" )
 
 [input]
 
