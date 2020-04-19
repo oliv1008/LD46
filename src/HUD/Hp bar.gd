@@ -12,5 +12,3 @@ func _physics_process(delta):
 		$"hp".color = YELLOW
 	if owner.hp <= 33:
 		$"hp".color = RED
-	Color()
-	

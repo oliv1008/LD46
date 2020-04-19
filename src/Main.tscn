@@ -21,22 +21,52 @@ autostart = true
 autostart = true
 
 [node name="Tree" parent="." instance=ExtResource( 2 )]
-position = Vector2( 256.204, 185.138 )
+position = Vector2( 249.729, 254.209 )
 
 [node name="Tree2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 94.66, 205.386 )
+position = Vector2( 563.048, 274.457 )
 
 [node name="Tree3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 830.806, 217.689 )
+position = Vector2( 425.014, 269.492 )
+
+[node name="Tree4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 571.79, 405.476 )
+
+[node name="Tree5" parent="." instance=ExtResource( 2 )]
+position = Vector2( 433.648, 429.219 )
+
+[node name="Tree6" parent="." instance=ExtResource( 2 )]
+position = Vector2( 189.741, 401.159 )
+
+[node name="Tree7" parent="." instance=ExtResource( 2 )]
+position = Vector2( 323.566, 355.831 )
+
+[node name="Tree8" parent="." instance=ExtResource( 2 )]
+position = Vector2( 716.407, 247.908 )
 
 [node name="Bone" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1593.87, 962.93 )
+position = Vector2( 1688.84, 803.203 )
 
 [node name="Bone2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1752.35, 823.999 )
+position = Vector2( 1741.56, 675.065 )
 
 [node name="Bone3" parent="." instance=ExtResource( 4 )]
-position = Vector2( 948.533, 981.891 )
+position = Vector2( 1678.1, 558.831 )
+
+[node name="Bone4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1375.91, 638.694 )
+
+[node name="Bone5" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1442.82, 778.995 )
+
+[node name="Bone6" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1179.49, 673.23 )
+
+[node name="Bone7" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1222.66, 867.492 )
+
+[node name="Bone8" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1572.33, 671.071 )
 
 [node name="Monster2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 797.671, 546.742 )

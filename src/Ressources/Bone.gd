@@ -7,6 +7,14 @@ var is_generating = false
 var move = false
 var bonePosition = Vector2()
 
+var bone1 = load("res://assets/Graphics/batiments/os.png")
+var bone2 = load("res://assets/Graphics/batiments/os 2.png")
+var bones = [bone1, bone2]
+
+func _ready():
+	randomize()
+	$Sprite.texture = bones[randi() % bones.size()]
+
 func _physics_process(delta):
 	if Input.is_action_just_pressed("BUTTON_LEFT") && Data.selected != null && activated == true && user == null:
 		user = Data.selected

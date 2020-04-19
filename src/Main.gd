@@ -13,21 +13,23 @@ func _ready():
 func add_ressources_per_tick(type: int, user):
 	if (type == Events.RessourcesType.food):
 		food_per_tick += 1*user.woodcutter_multiplier
+		Events.emit_signal("new_ressources_per_sec_value", Events.RessourcesType.food, food_per_tick)
 	if (type == Events.RessourcesType.bone):
 		bone_per_tick += 1*user.miner_multiplier
+		Events.emit_signal("new_ressources_per_sec_value", Events.RessourcesType.bone, bone_per_tick)
 
 func delete_ressources_per_tick(type: int, user):
 	if (type == Events.RessourcesType.food):
 		food_per_tick -= 1*user.woodcutter_multiplier
+		Events.emit_signal("new_ressources_per_sec_value", Events.RessourcesType.food, food_per_tick)
 	if (type == Events.RessourcesType.bone):
 		bone_per_tick -= 1*user.miner_multiplier
+		Events.emit_signal("new_ressources_per_sec_value", Events.RessourcesType.bone, bone_per_tick)
 
 func _on_FoodTimer_timeout():
 	foods += food_per_tick
-	print("Quantité de food : ", foods)
 	Events.emit_signal("new_ressources_value", Events.RessourcesType.food, foods)
 
 func _on_MaterialTimer_timeout():
 	bones += bone_per_tick
-	print("Quantité de bone : ", bones)
 	Events.emit_signal("new_ressources_value", Events.RessourcesType.bone, bones)

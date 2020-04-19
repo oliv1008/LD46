@@ -1,10 +1,13 @@
 extends Control
 
-onready var number_food = $HFood/FoodNumber
-onready var number_bone = $HBone/BoneNumber
+onready var number_food = $FoodNumber
+onready var number_bone = $BoneNumber
+onready var food_per_sec = $FoodPerSec
+onready var bone_per_sec = $BonePerSec
 
 func _ready():
 	Events.connect("new_ressources_value", self, "change_ressources_value")
+	Events.connect("new_ressources_per_sec_value", self, "change_ressources_per_sec_value")
 
 
 func change_ressources_value(type: int, value):
@@ -12,6 +15,12 @@ func change_ressources_value(type: int, value):
 		number_food.text = str(_format(value))
 	if type == Events.RessourcesType.bone:
 		number_bone.text = str(_format(value))
+		
+func change_ressources_per_sec_value(type: int, value):
+	if type == Events.RessourcesType.food:
+		food_per_sec.text = str("+",  value, " per sec")
+	if type == Events.RessourcesType.bone:
+		bone_per_sec.text = str("+",  value, " per sec")
 
 func _format(value):
 	if (value < 1000):

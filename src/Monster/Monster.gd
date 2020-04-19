@@ -1,10 +1,13 @@
 extends KinematicBody2D
 
 var random02 = [0, 0.2, 0.4, 0.6, 0.8, 1.0]
+var names = ["Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Golf", "Hotel", "India", "Juliett", "Kilo", "Lima", "Mike", "November", "Oscar", "Papa", "Quebec", "Romeo", "Sierra", "Tango", "Uniform", "Victor", "Whiskey", "Xray", "Yankee", "Zulu"]
 
 export var speed = 450 #(pixels/sec)
 
 export (int) var hp = 100
+
+var monster_name
 
 var woodcutter_level = 1
 var miner_level = 1
@@ -28,11 +31,10 @@ var activated # = true si la souris est sur le monstre, false sinon
 
 var activity = null
 
-var iddle = true
-
 func _ready():
 	randomize()
 	$AnimatedSprite.modulate = Color(random02[randi() % random02.size()], random02[randi() % random02.size()], random02[randi() % random02.size()], 1)
+	name = names[randi() % names.size()]
 	iddle()
 
 func _physics_process(delta):
@@ -93,7 +95,7 @@ func levelup_soldier():
 
 
 func _on_HpDecay_timeout():
-	hp -= 50
+	hp -= 20
 	if(hp <= 0):
 		var animationPlayer = $AnimationPlayer
 		animationPlayer.play("die")
