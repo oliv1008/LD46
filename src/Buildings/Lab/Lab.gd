@@ -35,7 +35,6 @@ func enter(user_param):
 	UI.reload_monster_list()
 
 func leave(_user_param):
-	print("_user_param = ", _user_param)
 	monsters_stand_by.remove(monsters_stand_by.find(_user_param))
 	#UI.on_monster_leave(_user_param)
 	research_value -= 1 + (0.15 * _user_param.scientist_level) 
