@@ -6,6 +6,8 @@ var bones = 0
 var food_per_tick = 0
 var bone_per_tick = 0
 
+onready var lab = $Lab
+
 func _ready():
 	Events.connect("new_ressources_generator", self, "add_ressources_per_tick")
 	Events.connect("delete_ressources_generator", self, "delete_ressources_per_tick") 
@@ -28,8 +30,10 @@ func delete_ressources_per_tick(type: int, user):
 
 func _on_FoodTimer_timeout():
 	foods += food_per_tick
-	Events.emit_signal("new_ressources_value", Events.RessourcesType.food, foods)
+	if food_per_tick > 0:
+		Events.emit_signal("new_ressources_value", Events.RessourcesType.food, foods)
 
 func _on_MaterialTimer_timeout():
 	bones += bone_per_tick
-	Events.emit_signal("new_ressources_value", Events.RessourcesType.bone, bones)
+	if bone_per_tick > 0:
+		Events.emit_signal("new_ressources_value", Events.RessourcesType.bone, bones)

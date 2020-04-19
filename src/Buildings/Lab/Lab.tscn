@@ -25,9 +25,12 @@ texture = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="ButtonBuild" type="Button" parent="."]
-margin_right = 12.0
-margin_bottom = 20.0
-text = "BUILD"
+margin_left = -55.7898
+margin_top = -9.47374
+margin_right = 68.2102
+margin_bottom = 10.5263
+disabled = true
+text = "BUILD (10 bones)"
 __meta__ = {
 "_edit_use_anchors_": false
 }

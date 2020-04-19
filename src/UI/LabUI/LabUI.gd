@@ -2,6 +2,11 @@ extends Control
 
 onready var research1_button = $TabContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer/Button
 onready var research2_button = $TabContainer/ScrollContainer/VBoxContainer/HBoxContainer2/VBoxContainer/Button
+
+onready var scientists_list = $TabContainer/ScientistsContainer
+
+var ListMonsterLabUI = preload("res://src/UI/ListMonsterUI/ListMonsterLabUI/ListMonsterLabUI.tscn")
+
 var lab
 
 # Called when the node enters the scene tree for the first time.
@@ -12,6 +17,17 @@ func init(lab_param):
 	lab = lab_param
 	rect_position = lab_param.get_node("PositionUI").position
 
+func on_monster_leave(monster):
+	lab.leave(monster)
+	reload_monster_list()
+
+func reload_monster_list():
+	for monster in scientists_list.get_children():
+		monster.queue_free()
+	for monster in lab.monsters_stand_by:
+		var list_monster_instance = ListMonsterLabUI.instance()
+		list_monster_instance.init(monster, self)
+		scientists_list.add_child(list_monster_instance)
 
 func _physics_process(delta):
 	if lab != null:
@@ -30,3 +46,8 @@ func _on_close_pressed():
 func _on_ButtonUpgrade_pressed():
 	if lab != null:
 		lab.upgrade()
+
+
+func _on_TabContainer_tab_changed(tab: int):
+	if tab == 1:
+		reload_monster_list()

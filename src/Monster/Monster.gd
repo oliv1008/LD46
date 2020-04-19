@@ -33,7 +33,7 @@ var activity = null
 func _ready():
 	randomize()
 	$AnimatedSprite.modulate = Color(random02[randi() % random02.size()], random02[randi() % random02.size()], random02[randi() % random02.size()], 1)
-	name = names[randi() % names.size()]
+	monster_name = names[randi() % names.size()]
 	iddle()
 
 func _physics_process(delta):

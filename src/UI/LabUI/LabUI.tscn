@@ -20,7 +20,6 @@ __meta__ = {
 }
 
 [node name="ScrollContainer" type="ScrollContainer" parent="TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -101,7 +100,7 @@ text = "Blablablablablablablablablabla
 blablabblablalbalablablalbalblablabla
 blablablablablabla"
 
-[node name="Scientists" type="VBoxContainer" parent="TabContainer"]
+[node name="ScientistsContainer" type="VBoxContainer" parent="TabContainer"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -111,6 +110,7 @@ margin_right = -4.0
 margin_bottom = -4.0
 
 [node name="Upgrade" type="VBoxContainer" parent="TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -134,5 +134,6 @@ margin_top = 13.1827
 margin_right = 398.72
 margin_bottom = 33.1827
 text = "x"
+[connection signal="tab_changed" from="TabContainer" to="." method="_on_TabContainer_tab_changed"]
 [connection signal="pressed" from="TabContainer/Upgrade/ButtonUpgrade" to="." method="_on_ButtonUpgrade_pressed"]
 [connection signal="pressed" from="close" to="." method="_on_close_pressed"]
