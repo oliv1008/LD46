@@ -143,11 +143,8 @@ tracks/0/keys = {
 extents = Vector2( 21.1717, 19.4739 )
 
 [node name="Monster" type="KinematicBody2D"]
-position = Vector2( 143.198, 138.298 )
+position = Vector2( 0, -0.377365 )
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Hp bar" parent="." instance=ExtResource( 3 )]
 margin_left = -25.0

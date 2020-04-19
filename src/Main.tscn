@@ -21,59 +21,60 @@ autostart = true
 autostart = true
 
 [node name="Tree" parent="." instance=ExtResource( 2 )]
-position = Vector2( 249.729, 254.209 )
+position = Vector2( 697.186, 245.634 )
 
 [node name="Tree2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 563.048, 274.457 )
+position = Vector2( 351.399, 409.894 )
 
 [node name="Tree3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 425.014, 269.492 )
+position = Vector2( 484.685, 434.501 )
 
 [node name="Tree4" parent="." instance=ExtResource( 2 )]
-position = Vector2( 571.79, 405.476 )
+position = Vector2( 537.999, 290.962 )
 
 [node name="Tree5" parent="." instance=ExtResource( 2 )]
-position = Vector2( 433.648, 429.219 )
+position = Vector2( 620.021, 389.389 )
 
 [node name="Tree6" parent="." instance=ExtResource( 2 )]
-position = Vector2( 189.741, 401.159 )
+position = Vector2( 400.612, 282.76 )
 
 [node name="Tree7" parent="." instance=ExtResource( 2 )]
-position = Vector2( 323.566, 355.831 )
+position = Vector2( 211.962, 434.501 )
 
 [node name="Tree8" parent="." instance=ExtResource( 2 )]
-position = Vector2( 716.407, 247.908 )
+position = Vector2( 261.175, 272.507 )
 
 [node name="Bone" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1688.84, 803.203 )
+position = Vector2( 1681.99, 637.72 )
 
 [node name="Bone2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1741.56, 675.065 )
+position = Vector2( 1288.28, 701.287 )
 
 [node name="Bone3" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1678.1, 558.831 )
+position = Vector2( 1405.16, 584.406 )
 
 [node name="Bone4" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1375.91, 638.694 )
+position = Vector2( 1716.85, 781.259 )
 
 [node name="Bone5" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1442.82, 778.995 )
+position = Vector2( 1546.65, 652.074 )
 
 [node name="Bone6" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1179.49, 673.23 )
+position = Vector2( 1288.28, 859.179 )
 
 [node name="Bone7" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1222.66, 867.492 )
+position = Vector2( 1431.82, 768.955 )
 
 [node name="Bone8" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1572.33, 671.071 )
-
-[node name="Monster2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 797.671, 546.742 )
+position = Vector2( 1142.69, 736.147 )
 
 [node name="Monster" parent="." instance=ExtResource( 3 )]
-position = Vector2( 798.694, 699.927 )
+position = Vector2( 532.927, 627.954 )
+
+[node name="Monster2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1219.86, 562.336 )
 
 [node name="HUD" parent="." instance=ExtResource( 5 )]
+margin_bottom = 0.0
 [connection signal="timeout" from="FoodTimer" to="." method="_on_FoodTimer_timeout"]
 [connection signal="timeout" from="MaterialTimer" to="." method="_on_MaterialTimer_timeout"]
