@@ -3,12 +3,10 @@
 [ext_resource path="res://src/Buildings/Bone/Bone.gd" type="Script" id=1]
 [ext_resource path="res://assets/Graphics/batiments/os 25.png" type="Texture" id=2]
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 45.4242
-height = 23.259
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 33.1329, 32.9335 )
 
 [node name="Bone" type="Node2D"]
-position = Vector2( 0.540344, 0 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
@@ -33,7 +31,6 @@ one_shot = true
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( 1.62106, -0.540359 )
 shape = SubResource( 1 )
 [connection signal="timeout" from="XP" to="." method="_on_XP_timeout"]
 [connection signal="timeout" from="Stop_effect" to="." method="_on_Stop_effect_timeout"]

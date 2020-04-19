@@ -148,6 +148,9 @@ extents = Vector2( 23.2839, 20.3981 )
 ]]
 position = Vector2( 0, -0.377365 )
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Hp bar" parent="." instance=ExtResource( 3 )]
 margin_left = -25.0
