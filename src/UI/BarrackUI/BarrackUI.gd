@@ -22,19 +22,20 @@ func reload_monster_list():
 		list_monster_instance.init(monster, self)
 		monsters_list.add_child(list_monster_instance)
 
-func _on_soldier_created():
-	barrack.create_soldier()
+func _on_weapon_created():
+	barrack.create_weapon()
 	
-func is_soldier_available():
-	return (barrack.current_weapon_quantity < barrack.max_weapon_quantity)
+func is_weapon_available():
+	return (barrack.number_of_weapon_possessed < barrack.max_weapon_quantity)
 	
 func on_monster_leave(monster):
 	barrack.current_weapon_quantity += 1
 	monster.changeActivity(null)
+	monster.is_a_soldier = false
 	reload_monster_list()
 	
 func on_monster_equipped(monster):
-	pass
+	monster.is_a_soldier = true
 
 func _on_close_pressed():
 	self.visible = false

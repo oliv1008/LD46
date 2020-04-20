@@ -5,7 +5,7 @@ signal delete_ressources_generator(type, user)
 
 signal new_ressources_value(type, value)
 signal new_ressources_per_sec_value(type, value)
-
+signal refresh_per_tick(type)
 signal new_food_needed_per_tick(value)
 
 signal new_monster()
@@ -22,9 +22,10 @@ signal end_research()
 signal disable_lab_button()
 signal enable_lab_button()
 
+signal ennemy_spawned()
+signal no_more_ennemies()
 
-
-
+signal new_next_wave_value(value)
 
 enum RessourcesType {food, bone}
 enum WeaponChoices {SPEAR}

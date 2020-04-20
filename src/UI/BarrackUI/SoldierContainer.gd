@@ -1,7 +1,7 @@
 extends HBoxContainer
 
 var main_ui
-var cost_soldier = 8
+var cost_weapon = 8
 onready var build_button = $BuildButtonContainer/BuildButton
 onready var available_max_value_label = $AvailableMaxValue
 
@@ -19,7 +19,7 @@ func _physics_process(delta):
 func _on_ressources_values_changed(type, new_value):
 	if main_ui != null:
 		if (type == Events.RessourcesType.bone):
-			if new_value >= cost_soldier && main_ui.is_soldier_available():
+			if new_value >= cost_weapon && main_ui.is_weapon_available():
 				build_button.disabled = false
 			else:
 				build_button.disabled = true
@@ -29,5 +29,5 @@ func _on_ressources_values_changed(type, new_value):
 #	pass
 
 func _on_BuildButton_pressed():
-	Events.emit_signal("use_bones", cost_soldier)
-	main_ui._on_soldier_created()
+	Events.emit_signal("use_bones", cost_weapon)
+	main_ui._on_weapon_created()

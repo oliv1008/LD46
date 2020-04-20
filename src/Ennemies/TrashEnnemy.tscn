@@ -1,69 +1,54 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=20 format=2]
 
-[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://assets/Graphics/Ennemy/Ennemi2.png" type="Texture" id=1]
 [ext_resource path="res://src/Ennemies/TrashEnnemy.gd" type="Script" id=2]
+[ext_resource path="res://assets/Graphics/Ennemy/Ennemi Profil L.png" type="Texture" id=3]
+[ext_resource path="res://assets/Graphics/Ennemy/Ennemi back.png" type="Texture" id=4]
+[ext_resource path="res://assets/Graphics/Ennemy/Ennemi back 2.png" type="Texture" id=5]
+[ext_resource path="res://assets/Graphics/Ennemy/Ennemi Profil R 2.png" type="Texture" id=6]
+[ext_resource path="res://assets/Graphics/Ennemy/Ennemi Profil R.png" type="Texture" id=7]
+[ext_resource path="res://assets/Graphics/Ennemy/Ennemi Profil L 2.png" type="Texture" id=8]
+[ext_resource path="res://assets/Graphics/Ennemy/Ennemi Death.png" type="Texture" id=9]
+[ext_resource path="res://assets/Graphics/Ennemy/Ennemi.png" type="Texture" id=10]
+[ext_resource path="res://src/UI/HUD/Hp bar.tscn" type="PackedScene" id=11]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 1 ) ],
+"frames": [ ExtResource( 10 ), ExtResource( 1 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 9 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 32.92, 32.1602 )
+[sub_resource type="CircleShape2D" id=9]
+radius = 18.0245
 
 [sub_resource type="Animation" id=3]
 resource_name = "attack"
 length = 0.4
 tracks/0/type = "value"
-tracks/0/path = NodePath("AnimatedSprite:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 20, 0 ), Vector2( 0, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Area2D/Hurtbox:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 20, 0 ), Vector2( 0, 0 ) ]
-}
-
-[sub_resource type="Animation" id=5]
-resource_name = "die"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/path = NodePath("AnimatedSprite:modulate")
+tracks/0/path = NodePath("AnimatedSprite:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
+"values": [ 0.0, 45.0, 90.0, 135.0, 180.0, 225.0, 270.0, 315.0, 360.0 ]
 }
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
+
+[sub_resource type="Animation" id=4]
+resource_name = "die"
+length = 0.3
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
 "times": PoolRealArray( 0.29 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
@@ -71,34 +56,114 @@ tracks/1/keys = {
 "method": "die"
 } ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 8 ]
+}
 
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 31.666, 30.9056 )
+[sub_resource type="Animation" id=5]
+resource_name = "moveDown"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "moveLeft"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 5, 4 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "moveRight"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 6, 7 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "moveUp"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 2, 3 ]
+}
 
 [node name="TrashEnnemy" type="KinematicBody2D"]
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-modulate = Color( 1, 0, 0, 1 )
+scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
-shape = SubResource( 2 )
-
-[node name="RayCast2D" type="RayCast2D" parent="."]
-enabled = true
-cast_to = Vector2( 50, 0 )
+position = Vector2( 1.1376, -5.68799 )
+shape = SubResource( 9 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/attack = SubResource( 3 )
-anims/die = SubResource( 5 )
+anims/die = SubResource( 4 )
+anims/moveDown = SubResource( 5 )
+anims/moveLeft = SubResource( 6 )
+anims/moveRight = SubResource( 7 )
+anims/moveUp = SubResource( 8 )
 
-[node name="Area2D" type="Area2D" parent="."]
-__meta__ = {
-"_edit_group_": true
-}
+[node name="DealDamage" type="Timer" parent="."]
+wait_time = 0.8
+one_shot = true
 
-[node name="Hurtbox" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 4 )
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[node name="Hp bar" parent="." instance=ExtResource( 11 )]
+margin_left = -25.0
+margin_top = -40.0
+margin_right = -25.0
+margin_bottom = -40.0
+rect_scale = Vector2( 0.5, 0.5 )
+[connection signal="timeout" from="DealDamage" to="." method="_on_DealDamage_timeout"]

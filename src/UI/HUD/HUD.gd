@@ -5,6 +5,8 @@ onready var number_bone = $BoneNumber
 onready var food_per_sec = $FoodPerSec
 onready var bone_per_sec = $BonePerSec
 onready var cost_per_sec = $CostPerSec
+var actual_food_per_sec
+var actual_bone_per_sec
 
 func _ready():
 	$GottaEat.text = str("Your monsters gotta eat ! That's why each of them consumes ", Data.food_needed_per_person, " per sec.")
@@ -14,6 +16,10 @@ func _ready():
 	Events.connect("new_research_state", self, "on_new_research_state")
 	Events.connect("new_research", self, "on_new_research")
 	Events.connect("end_research", self, "on_end_research")
+	
+	Events.connect("refresh_per_tick", self, "on_refresh_per_tick")
+	
+	Events.connect("new_next_wave_value", self, "on_new_next_wave_value")
 
 
 func change_ressources_value(type: int, value):
@@ -24,8 +30,10 @@ func change_ressources_value(type: int, value):
 		
 func change_ressources_per_sec_value(type: int, value):
 	if type == Events.RessourcesType.food:
+		actual_food_per_sec = value
 		food_per_sec.text = str("+",  value*Data.food_harvest_speed, " per sec")
 	if type == Events.RessourcesType.bone:
+		actual_bone_per_sec = value
 		bone_per_sec.text = str("+",  value*Data.bone_harvest_speed, " per sec")
 
 func change_food_needed_per_tick_value(value):
@@ -40,6 +48,16 @@ func on_new_research(image):
 
 func on_end_research():
 	$Icon.texture = null
+	
+func on_refresh_per_tick(type: int):
+	if type == Events.RessourcesType.food:
+		food_per_sec.text = str("+",  actual_food_per_sec*Data.food_harvest_speed, " per sec")
+	if type == Events.RessourcesType.bone:
+		bone_per_sec.text = str("+",  actual_bone_per_sec*Data.bone_harvest_speed, " per sec")
+
+func on_new_next_wave_value(value):
+	$NextWave.text = str(value)
+	
 
 func _format(value):
 	if (value < 1000):

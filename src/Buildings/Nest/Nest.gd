@@ -74,7 +74,7 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
 
 
 func _on_Procreation_timeout():
-	actual_procreation += fuck_value*20
+	actual_procreation += fuck_value
 	for monster in monsters_stand_by:
 		var floor_value = floor(monster.fucker_level)
 		monster.fucker_level += 0.01/floor_value

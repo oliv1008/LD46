@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
+[ext_resource path="res://assets/CaveStory32.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/CaveStory78.tres" type="DynamicFont" id=2]
 [ext_resource path="res://src/UI/HUD/HUD.gd" type="Script" id=3]
 [ext_resource path="res://assets/Graphics/Icon/Icon os ps.png" type="Texture" id=4]
@@ -32,39 +33,39 @@ __meta__ = {
 }
 
 [node name="fondChargement" type="ColorRect" parent="."]
-margin_left = 1081.0
-margin_top = 4.0
-margin_right = 1722.0
-margin_bottom = 76.0
+margin_left = 973.632
+margin_top = 2.94739
+margin_right = 1614.63
+margin_bottom = 74.9474
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Chargement2Noire" type="ColorRect" parent="."]
-margin_left = 1082.0
-margin_top = 5.0
-margin_right = 1721.0
-margin_bottom = 75.0
+margin_left = 974.632
+margin_top = 3.94739
+margin_right = 1613.63
+margin_bottom = 73.9474
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Chargement" type="ColorRect" parent="."]
-margin_left = 1082.0
-margin_top = 5.0
-margin_right = 1082.0
-margin_bottom = 75.0
+margin_left = 974.632
+margin_top = 3.94739
+margin_right = 974.632
+margin_bottom = 73.9474
 color = Color( 0.219608, 0.45098, 1, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ResearchLabel" type="Label" parent="."]
-margin_left = 1082.0
-margin_top = 4.0975
-margin_right = 1721.0
-margin_bottom = 74.0975
+margin_left = 974.632
+margin_top = 3.04489
+margin_right = 1613.63
+margin_bottom = 73.0449
 size_flags_horizontal = 4
 custom_fonts/font = ExtResource( 2 )
 text = "0%"
@@ -139,10 +140,10 @@ __meta__ = {
 }
 
 [node name="Science" type="TextureRect" parent="."]
-margin_left = 1012.32
-margin_top = 2.08908
-margin_right = 1062.32
-margin_bottom = 52.0891
+margin_left = 904.952
+margin_top = 1.03647
+margin_right = 954.952
+margin_bottom = 51.0365
 rect_scale = Vector2( 1.4, 1.4 )
 texture = ExtResource( 6 )
 __meta__ = {
@@ -150,10 +151,10 @@ __meta__ = {
 }
 
 [node name="Icon" type="TextureRect" parent="."]
-margin_left = 1780.16
-margin_top = 1.42096
-margin_right = 1870.16
-margin_bottom = 91.421
+margin_left = 1613.84
+margin_top = -2.78955
+margin_right = 1703.84
+margin_bottom = 87.2105
 rect_scale = Vector2( 1.2, 1.2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -177,6 +178,32 @@ margin_top = 5.0
 margin_right = 524.463
 margin_bottom = 49.0
 custom_fonts/font = SubResource( 1 )
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimeBeforeNext" type="Label" parent="."]
+margin_left = 1770.44
+margin_top = 1.45151
+margin_right = 1921.44
+margin_bottom = 79.4515
+custom_fonts/font = ExtResource( 1 )
+text = "Time before next attack :"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextWave" type="Label" parent="."]
+margin_left = 1770.42
+margin_top = 44.5872
+margin_right = 1914.42
+margin_bottom = 75.5872
+custom_fonts/font = ExtResource( 1 )
+text = "120"
+align = 1
+valign = 1
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false

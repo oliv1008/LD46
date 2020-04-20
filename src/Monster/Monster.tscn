@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://assets/Graphics/Character White PS/Character 2.png" type="Texture" id=1]
 [ext_resource path="res://src/Monster/Monster.gd" type="Script" id=2]
@@ -13,9 +13,10 @@
 [ext_resource path="res://assets/Graphics/Character White PS/Character Death.png" type="Texture" id=11]
 [ext_resource path="res://assets/Graphics/Character White PS/Character.png" type="Texture" id=12]
 [ext_resource path="res://assets/Graphics/Character White PS/Character Stand.png" type="Texture" id=13]
+[ext_resource path="res://assets/Graphics/Icon/vrai epee.png" type="Texture" id=14]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 23.9974, 19.6847 )
+[sub_resource type="CircleShape2D" id=11]
+radius = 20.6661
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -26,7 +27,22 @@ animations = [ {
 } ]
 
 [sub_resource type="Animation" id=3]
-resource_name = "die"
+resource_name = "attack"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 45.0, 90.0, 135.0, 180.0, 225.0, 270.0, 315.0, 360.0 ]
+}
+
+[sub_resource type="Animation" id=4]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:frame")
@@ -55,8 +71,7 @@ tracks/1/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "iddle"
+[sub_resource type="Animation" id=5]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -72,8 +87,7 @@ tracks/0/keys = {
 "values": [ 0, 1 ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "moveDown"
+[sub_resource type="Animation" id=6]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -89,8 +103,7 @@ tracks/0/keys = {
 "values": [ 0, 2 ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "moveLeft"
+[sub_resource type="Animation" id=7]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -106,8 +119,7 @@ tracks/0/keys = {
 "values": [ 5, 6 ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "moveRight"
+[sub_resource type="Animation" id=8]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -123,8 +135,7 @@ tracks/0/keys = {
 "values": [ 7, 8 ]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "moveUp"
+[sub_resource type="Animation" id=9]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -140,13 +151,14 @@ tracks/0/keys = {
 "values": [ 3, 4 ]
 }
 
-[sub_resource type="RectangleShape2D" id=9]
+[sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 23.2839, 20.3981 )
 
 [node name="Monster" type="KinematicBody2D" groups=[
 "monsters",
 ]]
 position = Vector2( 8.38008, 7.30438 )
+collision_layer = 2
 collision_mask = 2
 script = ExtResource( 2 )
 __meta__ = {
@@ -161,7 +173,7 @@ margin_bottom = -35.0
 rect_scale = Vector2( 0.5, 0.5 )
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource( 11 )
 
 [node name="Hovering" type="Sprite" parent="."]
 visible = false
@@ -172,27 +184,39 @@ texture = ExtResource( 12 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 2, 2 )
 frames = SubResource( 2 )
-frame = 9
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/die = SubResource( 3 )
-anims/iddle = SubResource( 4 )
-anims/moveDown = SubResource( 5 )
-anims/moveLeft = SubResource( 6 )
-anims/moveRight = SubResource( 7 )
-anims/moveUp = SubResource( 8 )
+anims/attack = SubResource( 3 )
+anims/die = SubResource( 4 )
+anims/iddle = SubResource( 5 )
+anims/moveDown = SubResource( 6 )
+anims/moveLeft = SubResource( 7 )
+anims/moveRight = SubResource( 8 )
+anims/moveUp = SubResource( 9 )
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 0.475655, -0.237823 )
-shape = SubResource( 9 )
+shape = SubResource( 10 )
 
 [node name="Selected" type="Sprite" parent="."]
 visible = false
 position = Vector2( 0, -60 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 5 )
+
+[node name="SoldierIcon" type="Sprite" parent="."]
+position = Vector2( 0, -60 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 14 )
+
+[node name="DealDamage" type="Timer" parent="."]
+wait_time = 0.8
+one_shot = true
+[connection signal="animation_changed" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_changed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_Area2D_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_Area2D_mouse_exited"]
+[connection signal="timeout" from="DealDamage" to="." method="_on_DealDamage_timeout"]

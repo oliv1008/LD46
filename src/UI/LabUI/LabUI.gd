@@ -97,6 +97,7 @@ func _on_ResearchingWoodHarvest_timeout():
 		$ResearchingWoodHarvest.stop()
 		Events.emit_signal("enable_lab_button")
 		Events.emit_signal("end_research")
+		Events.emit_signal("refresh_per_tick", Events.RessourcesType.food)
 		reload_upgrade_list()
 	Events.emit_signal("new_research_state", actual_research, actual_research_cost)
 
@@ -115,6 +116,7 @@ func _on_ResearchingBoneHarvest_timeout():
 		$ResearchingBoneHarvest.stop()
 		Events.emit_signal("enable_lab_button")
 		Events.emit_signal("end_research")
+		Events.emit_signal("refresh_per_tick", Events.RessourcesType.bone)
 		reload_upgrade_list()
 	Events.emit_signal("new_research_state", actual_research, actual_research_cost)
 
