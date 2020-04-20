@@ -1,20 +1,22 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://src/UI/MonsterUI/MonsterUI.gd" type="Script" id=1]
+[ext_resource path="res://assets/Graphics/Theme/theme_basic.tres" type="Theme" id=2]
 
 [node name="MonsterUI" type="Panel"]
-margin_right = 483.0
-margin_bottom = 268.0
+margin_right = 616.0
+margin_bottom = 328.0
+theme = ExtResource( 2 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="LabelNom" type="Label" parent="."]
-margin_left = 261.25
-margin_top = 18.6493
-margin_right = 331.25
-margin_bottom = 32.6493
+margin_left = 312.024
+margin_top = 21.8227
+margin_right = 439.024
+margin_bottom = 46.8227
 size_flags_horizontal = 4
 text = "NOM NOM	"
 __meta__ = {
@@ -22,17 +24,17 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_right = 484.0
-margin_bottom = 266.0
+margin_right = 616.0
+margin_bottom = 287.0
 custom_constants/separation = 30
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
-margin_top = 93.0
+margin_top = 103.0
 margin_right = 80.0
-margin_bottom = 173.0
+margin_bottom = 183.0
 rect_min_size = Vector2( 80, 80 )
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -43,41 +45,49 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
 margin_left = 110.0
-margin_right = 484.0
-margin_bottom = 266.0
+margin_right = 616.0
+margin_bottom = 287.0
 size_flags_horizontal = 3
 custom_constants/separation = 22
-alignment = 1
+alignment = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="LabelFoodHarvesterLvl" type="Label" parent="HBoxContainer/VBoxContainer"]
-margin_top = 54.0
-margin_right = 374.0
-margin_bottom = 68.0
+margin_top = 99.0
+margin_right = 506.0
+margin_bottom = 119.0
 text = "Food harvester lvl. : XX"
 
 [node name="LabelBoneHarvesterLvl" type="Label" parent="HBoxContainer/VBoxContainer"]
-margin_top = 90.0
-margin_right = 374.0
-margin_bottom = 104.0
+margin_top = 141.0
+margin_right = 506.0
+margin_bottom = 161.0
 text = "Bone harvester lvl. : XX"
 
 [node name="LabelSoldierLvl" type="Label" parent="HBoxContainer/VBoxContainer"]
-margin_top = 126.0
-margin_right = 374.0
-margin_bottom = 140.0
+margin_top = 183.0
+margin_right = 506.0
+margin_bottom = 203.0
 text = "Soldier lvl. : XX"
 
 [node name="LabelScientistLvl" type="Label" parent="HBoxContainer/VBoxContainer"]
-margin_top = 162.0
-margin_right = 374.0
-margin_bottom = 176.0
+margin_top = 225.0
+margin_right = 506.0
+margin_bottom = 245.0
 text = "Scientist lvl. : XX"
 
 [node name="LabelRomanticLvl" type="Label" parent="HBoxContainer/VBoxContainer"]
-margin_top = 198.0
-margin_right = 374.0
-margin_bottom = 212.0
+margin_top = 267.0
+margin_right = 506.0
+margin_bottom = 287.0
 text = "Romantic lvl. ; XX"
+
+[node name="close" type="Button" parent="."]
+margin_left = 605.373
+margin_top = -9.52271
+margin_right = 625.373
+margin_bottom = 14.4773
+text = "X"
+[connection signal="pressed" from="close" to="." method="_on_close_pressed"]

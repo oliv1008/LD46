@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/Graphics/batiments/laboratoire.png" type="Texture" id=1]
 [ext_resource path="res://src/Buildings/Lab/Lab.gd" type="Script" id=2]
 [ext_resource path="res://src/UI/LabUI/LabUI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/Graphics/Theme/theme_basic.tres" type="Theme" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 95.0486, 94.1484 )
@@ -36,6 +37,7 @@ margin_left = -55.7898
 margin_top = -9.47374
 margin_right = 68.2102
 margin_bottom = 10.5263
+theme = ExtResource( 4 )
 disabled = true
 text = "BUILD (1 bones)"
 __meta__ = {

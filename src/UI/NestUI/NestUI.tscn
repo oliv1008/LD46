@@ -1,43 +1,49 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
+[ext_resource path="res://assets/Graphics/Theme/theme_basic.tres" type="Theme" id=1]
 [ext_resource path="res://src/UI/NestUI/NestUI.gd" type="Script" id=2]
 
 [node name="NestUI" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 1 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Panel" type="Panel" parent="."]
-margin_right = 388.0
-margin_bottom = 233.0
+margin_right = 472.0
+margin_bottom = 312.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="FuckersContainer" type="VBoxContainer" parent="."]
-margin_left = 46.0
-margin_right = 385.0
-margin_bottom = 196.0
-custom_constants/separation = 80
+margin_left = 29.0
+margin_top = 10.0
+margin_right = 399.0
+margin_bottom = 209.0
+custom_constants/separation = 39
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ButtonMate" type="Button" parent="."]
-margin_left = 131.781
-margin_top = 175.647
-margin_right = 264.781
-margin_bottom = 204.647
+margin_left = 172.631
+margin_top = 251.647
+margin_right = 305.631
+margin_bottom = 280.647
 text = "MATE"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="close" type="Button" parent="."]
-margin_left = 376.89
-margin_top = -6.30252
-margin_right = 396.89
-margin_bottom = 13.6975
+margin_left = 455.74
+margin_top = -13.9025
+margin_right = 479.74
+margin_bottom = 15.0975
 text = "X"
 __meta__ = {
 "_edit_use_anchors_": false

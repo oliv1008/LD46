@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://src/Buildings/Barrack/Barrack.gd" type="Script" id=2]
 [ext_resource path="res://src/UI/BarrackUI/BarrackUI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/Graphics/Theme/theme_basic.tres" type="Theme" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 99.4682, 94.7422 )
@@ -21,6 +22,7 @@ margin_left = -34.5831
 margin_top = -22.1548
 margin_right = 35.4169
 margin_bottom = 22.8452
+theme = ExtResource( 4 )
 disabled = true
 text = "Build"
 __meta__ = {

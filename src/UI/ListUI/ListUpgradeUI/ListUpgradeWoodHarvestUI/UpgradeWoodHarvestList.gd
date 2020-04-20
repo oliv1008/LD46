@@ -1,8 +1,10 @@
 extends HBoxContainer
 
+onready var bone_icon_path = "res://assets/Graphics/Icon/Icon os ps.png"
+onready var science_icon_path = "res://assets/Graphics/Icon/icon science.png"
 
 onready var description_label = $VBoxContainer2/DescriptionLabel
-onready var cost_label = $VBoxContainer2/CostLabel
+onready var cost_label = $VBoxContainer2/HBoxContainer/CostLabel
 onready var research_button = $VBoxContainer/ResearchButton
 var cost
 var research_cost
@@ -19,8 +21,8 @@ func init(level):
 	Events.connect("new_ressources_value", self, "_on_ressources_values_changed")
 	cost = round(level * initial_cost)
 	research_cost = round(level * initial_research_cost)
-	cost_label.text = str("Cost : ", cost, " bones and ", research_cost, " research")
-
+	cost_label.bbcode_text = str(cost, " [img]res://assets/Graphics/Icon/Icon os ps25.png[/img]\n", research_cost, " [img]res://assets/Graphics/Icon/icon science25.png[/img]")
+	
 func _on_ressources_values_changed(type, new_value):
 	if (type == Events.RessourcesType.bone):
 		if new_value >= cost && disabling == false:
