@@ -1,16 +1,16 @@
-[gd_scene load_steps=12 format=2]
+[gd_resource type="Theme" load_steps=9 format=2]
 
-[ext_resource path="res://assets/Graphics/Upgrades/icon_build_soldier.png" type="Texture" id=1]
-[ext_resource path="res://src/UI/BarrackUI/BarrackUI.gd" type="Script" id=2]
-[ext_resource path="res://src/UI/BarrackUI/SoldierContainer.gd" type="Script" id=3]
-[ext_resource path="res://assets/CaveStory40.tres" type="DynamicFont" id=4]
+[ext_resource path="res://assets/CaveStory40.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/Graphics/Theme/styleboxflat_button_pressed.tres" type="StyleBox" id=2]
+[ext_resource path="res://assets/Graphics/Theme/styleboxflat_button_normal.tres" type="StyleBox" id=3]
+[ext_resource path="res://assets/Graphics/Theme/styleboxflat_button_disabled.tres" type="StyleBox" id=4]
 [ext_resource path="res://assets/Graphics/Theme/styleboxflat.tres" type="StyleBox" id=5]
-[ext_resource path="res://assets/Graphics/Theme/styleboxflat_button_pressed.tres" type="StyleBox" id=6]
-[ext_resource path="res://assets/Graphics/Theme/styleboxflat_button_normal.tres" type="StyleBox" id=7]
-[ext_resource path="res://assets/Graphics/Theme/styleboxflat_button_disabled.tres" type="StyleBox" id=8]
-[ext_resource path="res://assets/Graphics/Theme/styleboxflat_button_hover.tres" type="StyleBox" id=9]
+[ext_resource path="res://assets/Graphics/Theme/styleboxflat_button_hover.tres" type="StyleBox" id=6]
 
 [sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.756863, 0.176471, 0.176471, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.12549, 0.113725, 0.113725, 1 )
 border_width_left = 5
 border_width_top = 5
@@ -23,18 +23,18 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 shadow_size = 3
 
-[sub_resource type="Theme" id=2]
+[resource]
 Button/colors/font_color = Color( 0.945098, 0.909804, 0.909804, 1 )
 Button/colors/font_color_disabled = Color( 0.2, 0.196078, 0.196078, 1 )
 Button/colors/font_color_hover = Color( 0.956863, 0.933333, 0.933333, 1 )
 Button/colors/font_color_pressed = Color( 0.968627, 0.933333, 0.933333, 1 )
 Button/constants/hseparation = 2
-Button/fonts/font = ExtResource( 4 )
-Button/styles/disabled = ExtResource( 8 )
+Button/fonts/font = ExtResource( 1 )
+Button/styles/disabled = ExtResource( 4 )
 Button/styles/focus = null
-Button/styles/hover = ExtResource( 9 )
-Button/styles/normal = ExtResource( 7 )
-Button/styles/pressed = ExtResource( 6 )
+Button/styles/hover = ExtResource( 6 )
+Button/styles/normal = ExtResource( 3 )
+Button/styles/pressed = ExtResource( 2 )
 CheckBox/colors/font_color = Color( 0, 0, 0, 1 )
 CheckBox/colors/font_color_disabled = Color( 0, 0, 0, 1 )
 CheckBox/colors/font_color_hover = Color( 0, 0, 0, 1 )
@@ -183,7 +183,7 @@ Label/constants/line_spacing = 3
 Label/constants/shadow_as_outline = 3
 Label/constants/shadow_offset_x = 1
 Label/constants/shadow_offset_y = 1
-Label/fonts/font = ExtResource( 4 )
+Label/fonts/font = ExtResource( 1 )
 Label/styles/normal = null
 LineEdit/colors/clear_button_color = Color( 0, 0, 0, 1 )
 LineEdit/colors/clear_button_color_pressed = Color( 0, 0, 0, 1 )
@@ -276,7 +276,7 @@ RichTextLabel/fonts/mono_font = null
 RichTextLabel/fonts/normal_font = null
 RichTextLabel/styles/focus = null
 RichTextLabel/styles/normal = null
-ScrollContainer/styles/bg = null
+ScrollContainer/styles/bg = SubResource( 1 )
 SpinBox/icons/updown = null
 TabContainer/colors/font_color_bg = Color( 0.4, 0.4, 0.415686, 1 )
 TabContainer/colors/font_color_disabled = Color( 0, 0, 0, 1 )
@@ -286,7 +286,7 @@ TabContainer/constants/label_valign_bg = 2
 TabContainer/constants/label_valign_fg = 0
 TabContainer/constants/side_margin = 8
 TabContainer/constants/top_margin = 24
-TabContainer/fonts/font = ExtResource( 4 )
+TabContainer/fonts/font = ExtResource( 1 )
 TabContainer/icons/decrement = null
 TabContainer/icons/decrement_highlight = null
 TabContainer/icons/increment = null
@@ -294,7 +294,7 @@ TabContainer/icons/increment_highlight = null
 TabContainer/icons/menu = null
 TabContainer/icons/menu_highlight = null
 TabContainer/styles/panel = ExtResource( 5 )
-TabContainer/styles/tab_bg = SubResource( 1 )
+TabContainer/styles/tab_bg = SubResource( 3 )
 TabContainer/styles/tab_disabled = null
 TabContainer/styles/tab_fg = ExtResource( 5 )
 Tabs/colors/font_color_bg = Color( 0.917647, 0.0745098, 0.0745098, 1 )
@@ -439,125 +439,3 @@ WindowDialog/fonts/title_font = null
 WindowDialog/icons/close = null
 WindowDialog/icons/close_highlight = null
 WindowDialog/styles/panel = null
-
-[node name="BarrackUI" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-theme = SubResource( 2 )
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TabContainer" type="TabContainer" parent="."]
-margin_right = 400.0
-margin_bottom = 245.0
-tab_align = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Build Weapons" type="Tabs" parent="TabContainer"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 40.0
-margin_right = -5.0
-margin_bottom = -5.0
-__meta__ = {
-"_editor_description_": "
-"
-}
-
-[node name="AvailableMax" type="Label" parent="TabContainer/Build Weapons"]
-margin_left = 87.6536
-margin_top = 2.10802
-margin_right = 199.654
-margin_bottom = 16.108
-text = "AVAILABLE / MAX"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Build Weapons"]
-margin_left = 6.0
-margin_top = 29.0
-margin_right = 319.0
-margin_bottom = 166.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-custom_constants/separation = 20
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="SoldierContainer" type="HBoxContainer" parent="TabContainer/Build Weapons/VBoxContainer"]
-margin_right = 395.0
-margin_bottom = 100.0
-custom_constants/separation = 40
-script = ExtResource( 3 )
-
-[node name="WeaponTexture" type="TextureRect" parent="TabContainer/Build Weapons/VBoxContainer/SoldierContainer"]
-margin_right = 100.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-size_flags_horizontal = 4
-size_flags_vertical = 4
-texture = ExtResource( 1 )
-stretch_mode = 5
-
-[node name="AvailableMaxValue" type="Label" parent="TabContainer/Build Weapons/VBoxContainer/SoldierContainer"]
-margin_left = 140.0
-margin_right = 286.0
-margin_bottom = 100.0
-size_flags_vertical = 1
-text = "XXX / XXX"
-align = 1
-valign = 1
-
-[node name="BuildButtonContainer" type="VBoxContainer" parent="TabContainer/Build Weapons/VBoxContainer/SoldierContainer"]
-margin_left = 326.0
-margin_right = 395.0
-margin_bottom = 100.0
-alignment = 1
-
-[node name="BuildButton" type="Button" parent="TabContainer/Build Weapons/VBoxContainer/SoldierContainer/BuildButtonContainer"]
-margin_top = 21.0
-margin_right = 69.0
-margin_bottom = 50.0
-size_flags_horizontal = 0
-size_flags_vertical = 4
-text = "build"
-
-[node name="LabelCost" type="Label" parent="TabContainer/Build Weapons/VBoxContainer/SoldierContainer/BuildButtonContainer"]
-margin_top = 54.0
-margin_right = 69.0
-margin_bottom = 79.0
-text = "8 Bo."
-align = 1
-
-[node name="Stand By" type="ScrollContainer" parent="TabContainer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 40.0
-margin_right = -5.0
-margin_bottom = -5.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Stand By"]
-
-[node name="close" type="Button" parent="."]
-margin_left = 388.636
-margin_top = 11.7475
-margin_right = 420.636
-margin_bottom = 46.7475
-text = "X"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-[connection signal="tab_changed" from="TabContainer" to="." method="_on_TabContainer_tab_changed"]
-[connection signal="pressed" from="TabContainer/Build Weapons/VBoxContainer/SoldierContainer/BuildButtonContainer/BuildButton" to="TabContainer/Build Weapons/VBoxContainer/SoldierContainer" method="_on_BuildButton_pressed"]
-[connection signal="pressed" from="close" to="." method="_on_close_pressed"]

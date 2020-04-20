@@ -1,11 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
+[ext_resource path="res://assets/Graphics/Theme/theme_basic.tres" type="Theme" id=1]
 [ext_resource path="res://src/UI/LabUI/LabUI.gd" type="Script" id=2]
 [ext_resource path="res://src/UI/ListUI/ListMonsterLabUI/ListMonsterLabUI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/UI/ListUI/ListUpgradeUI/ListUpgradeBoneHarvest/UpgradeBoneHarvestList.tscn" type="PackedScene" id=4]
 
 [node name="LabUI" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 1 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -13,8 +16,8 @@ __meta__ = {
 ListMonsterLabUI = ExtResource( 3 )
 
 [node name="TabContainer" type="TabContainer" parent="."]
-margin_right = 385.0
-margin_bottom = 269.0
+margin_right = 555.0
+margin_bottom = 313.0
 tab_align = 0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -23,49 +26,61 @@ __meta__ = {
 [node name="Research" type="ScrollContainer" parent="TabContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 32.0
-margin_right = -4.0
-margin_bottom = -4.0
+margin_left = 5.0
+margin_top = 35.0
+margin_right = -5.0
+margin_bottom = -5.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Research"]
-custom_constants/separation = 10
+margin_right = 545.0
+margin_bottom = 139.0
+size_flags_horizontal = 3
+custom_constants/separation = 29
+
+[node name="UpgradeBoneHarvestList" parent="TabContainer/Research/VBoxContainer" instance=ExtResource( 4 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 545.0
+margin_bottom = 139.0
 
 [node name="Scientists" type="VBoxContainer" parent="TabContainer"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 32.0
-margin_right = -4.0
-margin_bottom = -4.0
-custom_constants/separation = 95
+margin_left = 5.0
+margin_top = 35.0
+margin_right = -5.0
+margin_bottom = -5.0
+custom_constants/separation = 38
 
 [node name="Upgrade" type="VBoxContainer" parent="TabContainer"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 32.0
-margin_right = -4.0
-margin_bottom = -4.0
+margin_left = 5.0
+margin_top = 35.0
+margin_right = -5.0
+margin_bottom = -5.0
 alignment = 1
 
 [node name="ButtonUpgrade" type="Button" parent="TabContainer/Upgrade"]
-margin_left = 156.0
-margin_top = 106.0
-margin_right = 221.0
-margin_bottom = 126.0
+margin_left = 254.0
+margin_top = 119.0
+margin_right = 375.0
+margin_bottom = 148.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Upgrade"
 
 [node name="close" type="Button" parent="."]
-margin_left = 379.72
-margin_top = 13.1827
-margin_right = 398.72
-margin_bottom = 33.1827
-text = "x"
+margin_left = 541.691
+margin_top = 15.1954
+margin_right = 565.691
+margin_bottom = 44.1954
+text = "X"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ResearchingWoodHarvest" type="Timer" parent="."]
 

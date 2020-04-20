@@ -17,6 +17,7 @@ func _ready():
 func init(monster_param):
 	monster = monster_param
 	texture.texture = monster.get_node("AnimatedSprite").frames.get_frame("default", 0)
+	texture.modulate = monster.get_node("AnimatedSprite").modulate
 	label_nom.text = monster.monster_name
 
 func refresh():
@@ -25,3 +26,7 @@ func refresh():
 	label_soldier.text = str("Soldier lvl. : ", monster.soldier_level)
 	label_scientist.text = str("Scientist lvl. : ", monster.scientist_level)
 	label_romantic.text = str("Romantic lvl. : ", monster.fucker_level)
+
+
+func _on_close_pressed():
+	Data.selected = null

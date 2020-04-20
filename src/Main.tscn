@@ -1,4 +1,5 @@
-[gd_scene load_steps=12 format=2]
+
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://src/Main.gd" type="Script" id=1]
 [ext_resource path="res://src/Buildings/Tree/Tree.tscn" type="PackedScene" id=2]
@@ -11,6 +12,9 @@
 [ext_resource path="res://src/Buildings/Barrack/Barrack.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/UI/MonsterUI/MonsterUI.tscn" type="PackedScene" id=10]
 [ext_resource path="res://src/Ennemies/TrashEnnemy.tscn" type="PackedScene" id=11]
+[ext_resource path="res://src/Trees.gd" type="Script" id=11]
+[ext_resource path="res://src/Bones.gd" type="Script" id=12]
+
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
@@ -45,53 +49,73 @@ position = Vector2( 1478.19, 184.558 )
 [node name="SpawnPosition3" type="Position2D" parent="SpawnEnnemyTimer"]
 position = Vector2( 1238.85, 161.289 )
 
-[node name="Tree" parent="." instance=ExtResource( 2 )]
-position = Vector2( 256.204, 185.138 )
+[node name="Trees" type="Node2D" parent="."]
+script = ExtResource( 11 )
 
-[node name="Tree2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 414.099, 419.394 )
-
-[node name="Tree3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 480.885, 309.101 )
-
-[node name="Tree4" parent="." instance=ExtResource( 2 )]
-position = Vector2( 586.449, 253.912 )
-
-[node name="Tree5" parent="." instance=ExtResource( 2 )]
+[node name="Tree1" parent="Trees" instance=ExtResource( 2 )]
 position = Vector2( 631.421, 354.238 )
 
-[node name="Tree6" parent="." instance=ExtResource( 2 )]
+[node name="Tree2" parent="Trees" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 586.449, 253.912 )
+
+[node name="Tree3" parent="Trees" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 414.099, 419.394 )
+
+[node name="Tree4" parent="Trees" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 480.885, 309.101 )
+
+[node name="Tree5" parent="Trees" instance=ExtResource( 2 )]
+visible = false
 position = Vector2( 359.762, 281.81 )
 
-[node name="Tree7" parent="." instance=ExtResource( 2 )]
+[node name="Tree6" parent="Trees" instance=ExtResource( 2 )]
+visible = false
 position = Vector2( 268.962, 412.651 )
 
-[node name="Tree8" parent="." instance=ExtResource( 2 )]
+[node name="Tree7" parent="Trees" instance=ExtResource( 2 )]
+visible = false
 position = Vector2( 217.475, 305.757 )
 
-[node name="Bone2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1288.28, 701.287 )
+[node name="Tree8" parent="Trees" instance=ExtResource( 2 )]
+visible = false
+position = Vector2( 256.204, 185.138 )
 
-[node name="Bone9" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1694.29, 594.659 )
+[node name="Bones" type="Node2D" parent="."]
+script = ExtResource( 12 )
 
-[node name="Bone3" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1405.16, 584.406 )
+[node name="Bone1" parent="Bones" instance=ExtResource( 4 )]
+position = Vector2( 1142.69, 736.147 )
 
-[node name="Bone4" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1716.85, 781.259 )
-
-[node name="Bone5" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1546.65, 652.074 )
-
-[node name="Bone6" parent="." instance=ExtResource( 4 )]
+[node name="Bone2" parent="Bones" instance=ExtResource( 4 )]
+visible = false
 position = Vector2( 1288.28, 859.179 )
 
-[node name="Bone7" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1431.82, 768.955 )
+[node name="Bone8" parent="Bones" instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 1716.85, 781.259 )
 
-[node name="Bone8" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1142.69, 736.147 )
+[node name="Bone7" parent="Bones" instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 1694.29, 594.659 )
+
+[node name="Bone5" parent="Bones" instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 1405.16, 584.406 )
+
+[node name="Bone3" parent="Bones" instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 1288.28, 701.287 )
+
+[node name="Bone6" parent="Bones" instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 1546.65, 652.074 )
+
+[node name="Bone4" parent="Bones" instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 1431.82, 768.955 )
 
 [node name="Barrack" parent="." instance=ExtResource( 9 )]
 position = Vector2( 1031.79, 222.451 )
@@ -117,10 +141,11 @@ position = Vector2( 650.075, 624.075 )
 [node name="HUD" parent="." instance=ExtResource( 5 )]
 
 [node name="MonsterUI" parent="." instance=ExtResource( 10 )]
-margin_left = 29.2819
-margin_top = 787.357
-margin_right = 512.282
-margin_bottom = 1055.36
+visible = false
+margin_left = 13.9476
+margin_top = 736.43
+margin_right = 629.948
+margin_bottom = 1064.43
 [connection signal="timeout" from="HpDecay" to="." method="_on_HpDecay_timeout"]
 [connection signal="timeout" from="FoodTimer" to="." method="_on_FoodTimer_timeout"]
 [connection signal="timeout" from="TimerNextWave" to="." method="_on_TimerNextWave_timeout"]
