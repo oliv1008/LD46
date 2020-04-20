@@ -2,7 +2,8 @@ extends Control
 
 onready var soldier_container = $"TabContainer/Build Weapons/VBoxContainer/SoldierContainer"
 onready var monsters_list = $"TabContainer/Stand By/VBoxContainer"
-onready var ListMonsterBarrackUI = preload("res://src/UI/ListUI/ListMonsterBarrackUI/ListMonsterBarrackUI.tscn")
+
+export (PackedScene) var ListMonsterBarrackUI
 
 var barrack
 # Called when the node enters the scene tree for the first time.
