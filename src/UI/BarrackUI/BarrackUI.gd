@@ -1,8 +1,9 @@
 extends Control
 
+onready var soldier_container = $"TabContainer/Build Weapons/VBoxContainer/SoldierContainer"
+onready var monsters_list = $"TabContainer/Stand By/VBoxContainer"
+onready var ListMonsterBarrackUI = preload("res://src/UI/ListUI/ListMonsterBarrackUI/ListMonsterBarrackUI.tscn")
 
-onready var available_max_value_label = $"TabContainer/Build Weapons/VBoxContainer/HBoxContainer/AvailableMaxValue"
-onready var build_button = $"TabContainer/Build Weapons/VBoxContainer/HBoxContainer/BuildButton"
 var barrack
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -11,21 +12,33 @@ func _ready():
 func init(barrack_param):
 	barrack = barrack_param
 	rect_position = barrack_param.get_node("PositionUI").position
+	soldier_container.init(self)
+	
+func reload_monster_list():
+	for monster_info in monsters_list.get_children():
+		monster_info.queue_free()
+	for monster in barrack.monsters_stand_by:
+		var list_monster_instance = ListMonsterBarrackUI.instance()
+		list_monster_instance.init(monster, self)
+		monsters_list.add_child(list_monster_instance)
 
-
-func _physics_process(delta):
-	if barrack != null:
-		available_max_value_label.text = str(barrack.current_weapon_quantity, " / ", barrack.max_weapon_quantity)
-		
-		if barrack.current_weapon_quantity >= barrack.max_weapon_quantity:
-			build_button.disabled = true
-		else:
-			build_button.disabled = false
-
-func _on_BuildButton_pressed():
-	if barrack != null:
-		barrack._on_Weapon_built(Events.WeaponChoices.SPEAR)
-
+func _on_soldier_created():
+	barrack.create_soldier()
+	
+func is_soldier_available():
+	return (barrack.current_weapon_quantity < barrack.max_weapon_quantity)
+	
+func on_monster_leave(monster):
+	barrack.current_weapon_quantity += 1
+	monster.changeActivity(null)
+	reload_monster_list()
+	
+func on_monster_equipped(monster):
+	pass
 
 func _on_close_pressed():
 	self.visible = false
+
+func _on_TabContainer_tab_changed(tab: int):
+	if tab == 1:
+		reload_monster_list()

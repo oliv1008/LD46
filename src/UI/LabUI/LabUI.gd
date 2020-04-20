@@ -71,12 +71,9 @@ func on_research_started(type: int, upgrade):
 func _on_close_pressed():
 	self.visible = false
 
-
-
 func _on_ButtonUpgrade_pressed():
 	if lab != null:
 		lab.upgrade()
-
 
 func _on_TabContainer_tab_changed(tab: int):
 	if tab == 1:

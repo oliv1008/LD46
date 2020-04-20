@@ -18,6 +18,14 @@ func _ready():
 	Events.connect("new_monster", self, "on_new_monster")
 	Events.connect("monster_death", self, "on_monster_death")
 	Events.connect("use_bones", self, "on_use_bones")
+	
+func _physics_process(delta):
+	if Data.selected != null:
+		$MonsterUI.init(Data.selected)
+		$MonsterUI.refresh()
+		$MonsterUI.visible = true
+	else:
+		$MonsterUI.visible = false
 
 func add_ressources_per_tick(type: int, user):
 	if (type == Events.RessourcesType.food):

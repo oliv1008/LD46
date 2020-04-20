@@ -38,6 +38,7 @@ func enter(user_param):
 func leave(_user_param):
 	monsters_stand_by.remove(monsters_stand_by.find(_user_param))
 	research_value -= _user_param.scientist_multiplier
+
 	_user_param.position = $ExitPosition.global_position
 	_user_param.visible = true
 
