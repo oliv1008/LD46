@@ -8,8 +8,6 @@ signal new_ressources_per_sec_value(type, value)
 
 signal new_food_needed_per_tick(value)
 
-signal use_bones(value)
-
 signal new_monster()
 signal monster_death()
 
