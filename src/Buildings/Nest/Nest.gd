@@ -11,21 +11,25 @@ var actual_procreation = 0
 
 var monsters_stand_by = []
 
+export (int) var price_to_build = 1
+
 export (PackedScene) var baby_monster
 
 func _ready():
+	$ButtonBuild.text = str("BUILD (", price_to_build, " bones)")
 	Events.connect("new_ressources_value", self, "_on_ressources_values_changed")
 	$Sprite2.modulate = Color(255, 255, 255, 1)
 	$Sprite.self_modulate = Color(1, 1, 1, 0.5)
 
 func _on_ressources_values_changed(type, new_value):
 	if (type == Events.RessourcesType.bone):
-		if new_value >= 0:
+		if new_value >= price_to_build:
 			$ButtonBuild.disabled = false
 		else:
 			$ButtonBuild.disabled = true
 
 func _on_ButtonBuild_pressed():
+	Events.emit_signal("use_bones", price_to_build)
 	$Sprite.self_modulate = Color(1, 1, 1, 1)
 	$ButtonBuild.visible = false
 	is_build = true
@@ -70,17 +74,18 @@ func _on_Area2D_input_event(_viewport, event, _shape_idx):
 
 
 func _on_Procreation_timeout():
-	actual_procreation += fuck_value
+	actual_procreation += fuck_value*20
 	for monster in monsters_stand_by:
 		var floor_value = floor(monster.fucker_level)
 		monster.fucker_level += 0.01/floor_value
 		if floor(monster.fucker_level) > floor_value:
 			monster.levelup_fucker()
+			fuck_value += 0.15
 	if actual_procreation >= time_needed_to_procreate:
 		var new_monster = baby_monster.instance()
 		new_monster.position = $ExitPosition.global_position
 		get_owner().add_child(new_monster)
-		get_owner().move_child($new_monster, get_index()-1)
+		get_owner().move_child($new_monster, get_index()+2)
 		actual_procreation = 0
 	UI.mate_button.text = str(actual_procreation, "/", time_needed_to_procreate)
 

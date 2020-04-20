@@ -7,10 +7,13 @@ onready var bone_per_sec = $BonePerSec
 onready var cost_per_sec = $CostPerSec
 
 func _ready():
-	$GottaEat.text = str("Your monster gotta eat ! That's why each of them consumes ", Data.food_needed_per_person, " per sec.")
+	$GottaEat.text = str("Your monsters gotta eat ! That's why each of them consumes ", Data.food_needed_per_person, " per sec.")
 	Events.connect("new_ressources_value", self, "change_ressources_value")
 	Events.connect("new_ressources_per_sec_value", self, "change_ressources_per_sec_value")
 	Events.connect("new_food_needed_per_tick", self, "change_food_needed_per_tick_value")
+	Events.connect("new_research_state", self, "on_new_research_state")
+	Events.connect("new_research", self, "on_new_research")
+	Events.connect("end_research", self, "on_end_research")
 
 
 func change_ressources_value(type: int, value):
@@ -21,12 +24,22 @@ func change_ressources_value(type: int, value):
 		
 func change_ressources_per_sec_value(type: int, value):
 	if type == Events.RessourcesType.food:
-		food_per_sec.text = str("+",  value, " per sec")
+		food_per_sec.text = str("+",  value*Data.food_harvest_speed, " per sec")
 	if type == Events.RessourcesType.bone:
-		bone_per_sec.text = str("+",  value, " per sec")
+		bone_per_sec.text = str("+",  value*Data.bone_harvest_speed, " per sec")
 
 func change_food_needed_per_tick_value(value):
 	cost_per_sec.text = str("-",  value, " per sec")
+	
+func on_new_research_state(actual_value, final_value):
+	$"Chargement".rect_size.x = (actual_value/final_value)*$Chargement2Noire.rect_size.x
+	$ResearchLabel.text = str(floor((actual_value/final_value)*100),"%")
+
+func on_new_research(image):
+	$Icon.texture = image
+
+func on_end_research():
+	$Icon.texture = null
 
 func _format(value):
 	if (value < 1000):

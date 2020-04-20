@@ -11,8 +11,11 @@ var DictionaryListUpgradesUI = {
 
 export (PackedScene) var ListMonsterLabUI
 
-
+var upgrading
 var lab
+var actual_research_cost
+
+var actual_research = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -43,19 +46,31 @@ func reload_upgrade_list():
 	for upgrade_name in upgrade_names: 
 		var list_upgrade_instance = DictionaryListUpgradesUI[upgrade_name].instance()
 		research_list.add_child(list_upgrade_instance)
-		list_upgrade_instance.research_button.connect("pressed", self, "on_research_started", [Data.upgrades_type[upgrade_name]])
+		list_upgrade_instance.connect("upgrade_selected", self, "on_research_started")
 		list_upgrade_instance.init(Data.upgrade_levels[upgrade_name])
 
-func on_research_started(type: int):
+func on_research_started(type: int, upgrade):
+	Events.emit_signal("disable_lab_button")
+	upgrading = upgrade
 	if (type == Data.Upgrades.WOOD_HARVEST):
-		pass
+		actual_research_cost = upgrading.research_cost
+		Events.emit_signal("use_bones", upgrading.cost)
+		Events.emit_signal("new_research", upgrading.get_node("VBoxContainer").get_node("TextureRect").texture)
+		$ResearchingWoodHarvest.start()
 	elif (type == Data.Upgrades.BONE_HARVEST):
-		pass
+		actual_research_cost = upgrading.research_cost
+		Events.emit_signal("use_bones", upgrading.cost)
+		Events.emit_signal("new_research", upgrading.get_node("VBoxContainer").get_node("TextureRect").texture)
+		$ResearchingBoneHarvest.start()
 	elif (type == Data.Upgrades.NUMBER_SOLDIER):
-		pass
+		actual_research_cost = upgrading.research_cost
+		Events.emit_signal("use_bones", upgrading.cost)
+		Events.emit_signal("new_research", upgrading.get_node("VBoxContainer").get_node("TextureRect").texture)
+		$ResearchingSoldierDmg.start()
 
 func _on_close_pressed():
 	self.visible = false
+
 
 
 func _on_ButtonUpgrade_pressed():
@@ -68,3 +83,58 @@ func _on_TabContainer_tab_changed(tab: int):
 		reload_monster_list()
 	if tab == 0:
 		reload_upgrade_list()
+
+
+func _on_ResearchingWoodHarvest_timeout():
+	actual_research += lab.research_value
+	for monster in lab.monsters_stand_by:
+		var floor_value = floor(monster.scientist_level)
+		monster.scientist_level += 0.01/floor_value
+		if floor(monster.scientist_level) > floor_value:
+			monster.levelup_scientist()
+			lab.research_value += 0.15
+	if actual_research >= actual_research_cost:
+		Data.food_harvest_speed += 0.10
+		Data.upgrade_levels["wood_harvest"] += 1
+		actual_research = 0
+		$ResearchingWoodHarvest.stop()
+		Events.emit_signal("enable_lab_button")
+		Events.emit_signal("end_research")
+		reload_upgrade_list()
+	Events.emit_signal("new_research_state", actual_research, actual_research_cost)
+
+func _on_ResearchingBoneHarvest_timeout():
+	actual_research += lab.research_value
+	for monster in lab.monsters_stand_by:
+		var floor_value = floor(monster.scientist_level)
+		monster.scientist_level += 0.01/floor_value
+		if floor(monster.scientist_level) > floor_value:
+			monster.levelup_scientist()
+			lab.research_value += 0.15
+	if actual_research >= actual_research_cost:
+		Data.bone_harvest_speed += 0.10
+		Data.upgrade_levels["bone_harvest"] += 1
+		actual_research = 0
+		$ResearchingBoneHarvest.stop()
+		Events.emit_signal("enable_lab_button")
+		Events.emit_signal("end_research")
+		reload_upgrade_list()
+	Events.emit_signal("new_research_state", actual_research, actual_research_cost)
+
+func _on_ResearchingSoldierDmg_timeout():
+	actual_research += lab.research_value
+	for monster in lab.monsters_stand_by:
+		var floor_value = floor(monster.scientist_level)
+		monster.scientist_level += 0.01/floor_value
+		if floor(monster.scientist_level) > floor_value:
+			monster.levelup_scientist()
+			lab.research_value += 0.15
+	if actual_research >= actual_research_cost:
+		Data.soldier_damage += 0.10
+		Data.upgrade_levels["max_number_soldier"] += 1
+		actual_research = 0
+		$ResearchingSoldierDmg.stop()
+		Events.emit_signal("enable_lab_button")
+		Events.emit_signal("end_research")
+		reload_upgrade_list()
+	Events.emit_signal("new_research_state", actual_research, actual_research_cost)

@@ -17,6 +17,7 @@ func _ready():
 	Events.connect("delete_ressources_generator", self, "delete_ressources_per_tick") 
 	Events.connect("new_monster", self, "on_new_monster")
 	Events.connect("monster_death", self, "on_monster_death")
+	Events.connect("use_bones", self, "on_use_bones")
 
 func add_ressources_per_tick(type: int, user):
 	if (type == Events.RessourcesType.food):
@@ -44,23 +45,14 @@ func on_monster_death():
 	Events.emit_signal("new_food_needed_per_tick", food_needed_per_tick)
 
 func _on_FoodTimer_timeout():
-	foods += food_per_tick
+	foods += food_per_tick*Data.food_harvest_speed
 	if food_per_tick > 0:
 		Events.emit_signal("new_ressources_value", Events.RessourcesType.food, foods)
 
 func _on_MaterialTimer_timeout():
-	bones += bone_per_tick
+	bones += bone_per_tick*Data.bone_harvest_speed
 	if bone_per_tick > 0:
 		Events.emit_signal("new_ressources_value", Events.RessourcesType.bone, bones)
-
-
-func _on_Area2D_input_event(viewport, event, shape_idx):
-	get_tree().set_input_as_handled()
-	if (event is InputEventMouseButton && event.pressed && Data.selected != null):
-		if Data.selected != null:
-			Data.selected.come_here(get_global_mouse_position())
-			#Data.selected = null
-
 
 func _on_HpDecay_timeout():
 	if foods < food_needed_per_tick:
@@ -69,3 +61,6 @@ func _on_HpDecay_timeout():
 		foods -= food_needed_per_tick
 		Events.emit_signal("new_ressources_value", Events.RessourcesType.food, foods)
 	
+func on_use_bones(value):
+	bones -= value
+	Events.emit_signal("new_ressources_value", Events.RessourcesType.bone, bones)

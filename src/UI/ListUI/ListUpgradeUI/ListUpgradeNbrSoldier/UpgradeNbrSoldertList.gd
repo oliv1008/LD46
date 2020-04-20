@@ -36,6 +36,5 @@ func on_enable_lab_button():
 	disabling = false
 	research_button.disabled = false
 
-
 func _on_ResearchButton_pressed():
-	emit_signal("upgrade_selected", Data.Upgrades.BONE_HARVEST, self)
+	emit_signal("upgrade_selected", Data.Upgrades.NUMBER_SOLDIER, self)

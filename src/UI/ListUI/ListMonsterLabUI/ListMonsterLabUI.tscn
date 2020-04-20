@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://src/UI/ListUI/ListMonsterLabUI/ListMonsterLabUI.gd" type="Script" id=1]
+[ext_resource path="res://src/UI/HUD/Hp bar.tscn" type="PackedScene" id=2]
 
 [node name="ListMonsterLabUI" type="Control"]
 anchor_right = 1.0
@@ -41,16 +42,23 @@ __meta__ = {
 }
 
 [node name="NameLabel" type="Label" parent="HBoxContainer/LabelContainer"]
-margin_top = 19.0
+margin_top = 12.0
 margin_right = 98.0
-margin_bottom = 33.0
+margin_bottom = 26.0
 text = "NOMNOM"
 
 [node name="ScientistLvlLabel" type="Label" parent="HBoxContainer/LabelContainer"]
-margin_top = 47.0
+margin_top = 40.0
 margin_right = 98.0
-margin_bottom = 61.0
+margin_bottom = 54.0
 text = "Scientist lvl. XX"
+
+[node name="Hp bar" parent="HBoxContainer/LabelContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 68.0
+margin_right = 98.0
+margin_bottom = 68.0
 
 [node name="LeaveButton" type="Button" parent="HBoxContainer"]
 margin_left = 258.0

@@ -74,17 +74,17 @@ position = Vector2( 1431.82, 768.955 )
 [node name="Bone8" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1142.69, 736.147 )
 
-[node name="Lab" parent="." instance=ExtResource( 7 )]
-position = Vector2( 1021.35, 501.221 )
-
-[node name="Nest" parent="." instance=ExtResource( 8 )]
-position = Vector2( 650.075, 624.075 )
-
 [node name="Monster" parent="." instance=ExtResource( 3 )]
 position = Vector2( 798.694, 699.927 )
 
 [node name="Monster2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 706.686, 257.034 )
+
+[node name="Lab" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1021.35, 501.221 )
+
+[node name="Nest" parent="." instance=ExtResource( 8 )]
+position = Vector2( 650.075, 624.075 )
 
 [node name="HUD" parent="." instance=ExtResource( 5 )]
 [connection signal="timeout" from="HpDecay" to="." method="_on_HpDecay_timeout"]

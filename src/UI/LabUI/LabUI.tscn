@@ -1,6 +1,4 @@
-
-[gd_scene load_steps=2 format=2]
-
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://src/UI/LabUI/LabUI.gd" type="Script" id=2]
 [ext_resource path="res://src/UI/ListUI/ListMonsterLabUI/ListMonsterLabUI.tscn" type="PackedScene" id=3]
@@ -68,6 +66,13 @@ margin_top = 13.1827
 margin_right = 398.72
 margin_bottom = 33.1827
 text = "x"
+
+[node name="ResearchingWoodHarvest" type="Timer" parent="."]
+
+[node name="ResearchingBoneHarvest" type="Timer" parent="."]
+
+[node name="ResearchingSoldierDmg" type="Timer" parent="."]
 [connection signal="tab_changed" from="TabContainer" to="." method="_on_TabContainer_tab_changed"]
 [connection signal="pressed" from="TabContainer/Upgrade/ButtonUpgrade" to="." method="_on_ButtonUpgrade_pressed"]
 [connection signal="pressed" from="close" to="." method="_on_close_pressed"]
+[connection signal="timeout" from="ResearchingWoodHarvest" to="." method="_on_ResearchingWoodHarvest_timeout"]
