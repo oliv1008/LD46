@@ -11,7 +11,7 @@ var food_needed_per_person = 0.2
 
 onready var popup_ui = $PopUpUI
 
-var first_popup_text = ["As I just said, your colony needs food to survive, but it's not the only ressource available. You can also harvest bones which will be useful to the growth of the colony.\nAssign bacteria to one of each ressources the same way you assigned to the nest."]
+var first_popup_text = ["As I just said, your colony needs food to survive, but it's not the only resource available. You can also harvest bones which will be useful to the growth of the colony.\nAssign bacteria to one of each resources the same way you assigned to the nest."]
 var second_popup_text = ["You are now recolting bones, let's see how to use them.\n\nFirst, there is the lab, a building in which you can research upgrades for your colony ... as long as you can pay the cost and have a bacteria assigned to it.\n\nThen there are the barracks, in which you can build weapons and arm your bacterias ... in case of unwanted visitors ...\n\nAnd I even heard you can use them to build even more harvest spots for foods and bones ! Aaaah, technology these days ...",
 						"Oh ! And I almost forgot something important !\nYour goal is to grow the colony to 20 bacterias.\n\nWell, I hope it wasn't too much informations ! I'll let you time to digest everything before you start for real, good luck !"]
 
@@ -66,7 +66,7 @@ func _on_ButtonLetsGo_pressed():
 	$ButtonLetsGo.visible = false
 	get_tree().paused = true
 	$Declaration.visible = true
-	$ButtonMain.visible = false
+	$ButtonMain.visible = true
 	
 func _physics_process(delta):
 	if Data.selected != null:
@@ -126,7 +126,7 @@ func on_use_bones(value):
 	bones -= value
 	Events.emit_signal("new_ressources_value", Events.RessourcesType.bone, bones)
 
-
 func _on_ButtonMain_pressed():
 	get_tree().paused = false
+	Data.monster_list.clear()
 	get_tree().change_scene_to(Main)

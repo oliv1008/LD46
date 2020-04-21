@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://src/Main.gd" type="Script" id=1]
 [ext_resource path="res://src/Buildings/Tree/Tree.tscn" type="PackedScene" id=2]
@@ -13,9 +13,8 @@
 [ext_resource path="res://src/Trees.gd" type="Script" id=11]
 [ext_resource path="res://src/Bones.gd" type="Script" id=12]
 [ext_resource path="res://src/Ennemies/TrashEnnemy.tscn" type="PackedScene" id=13]
-[ext_resource path="res://src/UI/VictoryScreen/VictoryScreen.tscn" type="PackedScene" id=14]
-[ext_resource path="res://src/UI/LooseScreen/LooseScreen.tscn" type="PackedScene" id=15]
 [ext_resource path="res://src/UI/HUD/pause_popup.tscn" type="PackedScene" id=14]
+[ext_resource path="res://src/UI/LooseScreen/LooseScreen.tscn" type="PackedScene" id=15]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
@@ -124,7 +123,22 @@ position = Vector2( 1431.82, 768.955 )
 position = Vector2( 1031.79, 222.451 )
 
 [node name="Monster" parent="." instance=ExtResource( 3 )]
-position = Vector2( 511.422, 659.843 )
+position = Vector2( 358.733, 636.352 )
+
+[node name="Monster2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 499.677, 771.423 )
+
+[node name="Monster3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 716.965, 853.64 )
+
+[node name="Monster4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 716.965, 853.64 )
+
+[node name="Monster5" parent="." instance=ExtResource( 3 )]
+position = Vector2( 716.965, 853.64 )
+
+[node name="Monster6" parent="." instance=ExtResource( 3 )]
+position = Vector2( 716.965, 853.64 )
 
 [node name="Lab" parent="." instance=ExtResource( 7 )]
 position = Vector2( 930.443, 461.627 )
