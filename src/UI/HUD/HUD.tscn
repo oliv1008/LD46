@@ -35,7 +35,7 @@ __meta__ = {
 [node name="fondChargement" type="ColorRect" parent="."]
 margin_left = 973.632
 margin_top = 2.94739
-margin_right = 1614.63
+margin_right = 1414.63
 margin_bottom = 74.9474
 __meta__ = {
 "_edit_use_anchors_": false
@@ -44,7 +44,7 @@ __meta__ = {
 [node name="Chargement2Noire" type="ColorRect" parent="."]
 margin_left = 974.632
 margin_top = 3.94739
-margin_right = 1613.63
+margin_right = 1413.63
 margin_bottom = 73.9474
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
@@ -64,7 +64,7 @@ __meta__ = {
 [node name="ResearchLabel" type="Label" parent="."]
 margin_left = 974.632
 margin_top = 3.04489
-margin_right = 1613.63
+margin_right = 1414.63
 margin_bottom = 73.0449
 size_flags_horizontal = 4
 custom_fonts/font = ExtResource( 2 )
@@ -151,10 +151,10 @@ __meta__ = {
 }
 
 [node name="Icon" type="TextureRect" parent="."]
-margin_left = 1616.0
-margin_top = 3.0
-margin_right = 1641.0
-margin_bottom = 28.0
+margin_left = 1420.05
+margin_top = 1.83368
+margin_right = 1445.05
+margin_bottom = 26.8337
 rect_scale = Vector2( 3, 3 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -166,7 +166,7 @@ margin_top = 50.0
 margin_right = 547.066
 margin_bottom = 76.0
 custom_fonts/font = ExtResource( 5 )
-text = "-1 per sec"
+text = "-2 per sec"
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -185,9 +185,9 @@ __meta__ = {
 
 [node name="TimeBeforeNext" type="Label" parent="."]
 margin_left = 1770.44
-margin_top = 1.45151
+margin_top = 1.5
 margin_right = 1921.44
-margin_bottom = 79.4515
+margin_bottom = 79.5
 custom_fonts/font = ExtResource( 1 )
 text = "Time before next attack :"
 autowrap = true
@@ -196,12 +196,39 @@ __meta__ = {
 }
 
 [node name="NextWave" type="Label" parent="."]
-margin_left = 1770.42
+margin_left = 1769.31
 margin_top = 44.5872
-margin_right = 1914.42
+margin_right = 1913.31
 margin_bottom = 75.5872
 custom_fonts/font = ExtResource( 1 )
 text = "???"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NumberOfBacteria" type="Label" parent="."]
+margin_left = 1537.0
+margin_top = 1.5
+margin_right = 1736.0
+margin_bottom = 45.5
+custom_fonts/font = ExtResource( 1 )
+text = "Number of Bacteria :"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NumberBacteria" type="Label" parent="."]
+margin_left = 1537.0
+margin_top = 48.0
+margin_right = 1736.0
+margin_bottom = 74.0
+custom_fonts/font = ExtResource( 1 )
+text = "3 / 20"
 align = 1
 valign = 1
 autowrap = true

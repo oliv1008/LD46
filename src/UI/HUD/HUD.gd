@@ -16,10 +16,13 @@ func _ready():
 	Events.connect("new_research_state", self, "on_new_research_state")
 	Events.connect("new_research", self, "on_new_research")
 	Events.connect("end_research", self, "on_end_research")
+	Events.connect("new_monster", self, "new_bacteria_number")
+	Events.connect("monster_death", self, "new_bacteria_number")
 	
 	Events.connect("refresh_per_tick", self, "on_refresh_per_tick")
 	
 	Events.connect("new_next_wave_value", self, "on_new_next_wave_value")
+	$NumberBacteria.text = str(Data.monster_list.size(), " / ", 20)
 
 
 func change_ressources_value(type: int, value):
@@ -27,7 +30,10 @@ func change_ressources_value(type: int, value):
 		number_food.text = str(_format(value))
 	if type == Events.RessourcesType.bone:
 		number_bone.text = str(_format(value))
-		
+
+func new_bacteria_number():
+	$NumberBacteria.text = str(Data.monster_list.size(), " / ", 20)
+
 func change_ressources_per_sec_value(type: int, value):
 	if type == Events.RessourcesType.food:
 		actual_food_per_sec = value

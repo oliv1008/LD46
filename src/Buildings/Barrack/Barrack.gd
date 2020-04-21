@@ -51,6 +51,8 @@ func leave(_user_param):
 
 func go_battle():
 	var compteur = 0
+	SoundManager.play_se("caserne_et_au_combat.wav")
+	SoundManager.set_se_volume_db(SoundManager.get_se_volume_db()-10)
 	for monster in monsters_stand_by:
 		if compteur == 0:
 			monster.position = $ExitPosition.global_position
@@ -94,6 +96,8 @@ func create_weapon():
 
 func _on_Area2D_input_event(_viewport, event, _shape_idx):
 	if (is_build && event is InputEventMouseButton && event.pressed):
+		SoundManager.play_se("caserne_et_au_combat.wav")
+		SoundManager.set_se_volume_db(SoundManager.get_se_volume_db()-10)
 		if (Data.selected == null):
 			UI.visible = true
 		

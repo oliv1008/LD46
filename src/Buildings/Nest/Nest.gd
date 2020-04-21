@@ -72,6 +72,7 @@ func on_monster_leave(user_param):
 
 func _on_Area2D_input_event(_viewport, event, _shape_idx):
 	if (is_build && event is InputEventMouseButton && event.pressed):
+		SoundManager.play_se("love_hotel.wav")
 		if (Data.selected == null):
 			UI.visible = true
 		elif (monsters_stand_by.size() < max_monsters_quantity):
