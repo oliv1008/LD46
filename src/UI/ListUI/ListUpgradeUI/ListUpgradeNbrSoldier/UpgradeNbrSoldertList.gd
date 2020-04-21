@@ -6,7 +6,7 @@ onready var cost_label = $VBoxContainer2/HBoxContainer/CostLabel
 onready var research_button = $VBoxContainer/ResearchButton
 export (int) var initial_cost = 11
 export (int) var initial_research_cost = 30
-var cost = initial_cost/2
+var cost = 11
 var research_cost = 30
 
 signal upgrade_selected(type, upgrade)

@@ -25,14 +25,19 @@ __meta__ = {
 [node name="Panel" type="Panel" parent="."]
 margin_right = 1920.0
 margin_bottom = 1080.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="."]
-margin_left = 634.587
-margin_top = 328.77
-margin_right = 1351.59
-margin_bottom = 377.77
+margin_left = 441.0
+margin_top = 329.0
+margin_right = 1489.0
+margin_bottom = 615.0
 custom_fonts/font = ExtResource( 2 )
-text = "Congratulations, you won !"
+text = "Congratulations, you won ! Your colony managed to reach 20 bacterias and they  could destroy the bacterias that were attacking them."
+align = 1
+autowrap = true
 
 [node name="ButtonWhatsNext" type="Button" parent="."]
 margin_left = 788.662

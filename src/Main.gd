@@ -6,7 +6,7 @@ var bones = 0
 var food_per_tick = 0
 var bone_per_tick = 0
 
-var food_needed_per_tick = 1.5
+var food_needed_per_tick = 2
 var food_needed_per_person = 0.5
 
 var current_wave_level = 0
