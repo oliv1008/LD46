@@ -59,7 +59,15 @@ func go_battle():
 		if compteur == 1:
 			monster.position = $ExitPosition2.global_position
 		if compteur == 2:
-			monster.position = $ExitPosition2.global_position
+			monster.position = $ExitPosition3.global_position
+		if compteur == 3:
+			monster.position = $ExitPosition4.global_position
+		if compteur == 4:
+			monster.position = $ExitPosition5.global_position
+		if compteur == 5:
+			monster.position = $ExitPosition6.global_position
+		if compteur == 6:
+			monster.position = $ExitPosition7.global_position
 		monster.visible = true
 		monster.isMoving = true
 		monster.combat = false

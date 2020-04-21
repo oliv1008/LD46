@@ -144,7 +144,7 @@ func _physics_process(delta):
 func _on_Area2D_input_event(viewport, event, shape_idx):
 	#get_tree().set_input_as_handled()
 	if (event is InputEventMouseButton && event.pressed): #&& isMoving == false:
-		if is_a_soldier == false:
+		if is_a_soldier == false || isMoving == false:
 			Data.selected = self
 
 func changeActivity(newActivity):

@@ -14,4 +14,3 @@ func init(monster, ui):
 	$VBoxContainer.get_node("Hp bar").init(monster)
 	$VBoxContainer/SoldierLvlLabel.text = str("Soldier lvl. ", monster.soldier_level)
 	$VBoxContainer2/ButtonKick.connect("pressed", main_ui, "on_monster_leave", [monster])
-	$VBoxContainer2/ButtonEquip.connect("pressed", main_ui, "on_monster_equipped", [monster])

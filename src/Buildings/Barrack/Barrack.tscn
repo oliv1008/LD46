@@ -48,13 +48,25 @@ visible = false
 position = Vector2( 125.359, -107.266 )
 
 [node name="ExitPosition" type="Position2D" parent="."]
-position = Vector2( -2.45547, 122.774 )
+position = Vector2( 41.5278, 122.774 )
 
 [node name="ExitPosition2" type="Position2D" parent="."]
 position = Vector2( -105.083, 25.0334 )
 
 [node name="ExitPosition3" type="Position2D" parent="."]
-position = Vector2( -11.415, -89.8117 )
+position = Vector2( -78.2044, 115.443 )
+
+[node name="ExitPosition4" type="Position2D" parent="."]
+position = Vector2( -68.4303, -67.0056 )
+
+[node name="ExitPosition5" type="Position2D" parent="."]
+position = Vector2( 118.906, 63.3152 )
+
+[node name="ExitPosition6" type="Position2D" parent="."]
+position = Vector2( 106.688, -23.8368 )
+
+[node name="ExitPosition7" type="Position2D" parent="."]
+position = Vector2( 27.6812, -94.6987 )
 [connection signal="pressed" from="ButtonBuild" to="." method="_on_ButtonBuild_pressed"]
 [connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_Area2D_mouse_entered"]

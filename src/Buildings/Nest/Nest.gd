@@ -6,7 +6,7 @@ var is_build: bool = false
 var max_monsters_quantity = 2
 var fuck_value = 0
 
-var time_needed_to_procreate = 100
+var time_needed_to_procreate = 50
 var actual_procreation = 0
 
 var monsters_stand_by = []
