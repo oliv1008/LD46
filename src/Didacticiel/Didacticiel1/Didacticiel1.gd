@@ -39,6 +39,7 @@ func on_end_reached():
 		goto_next_step()
 	
 	elif current_step == Steps.SECOND_POPUP:
+		Data.monster_list.clear()
 		get_tree().change_scene_to(Didacticiel2)
 		
 func on_button_mate_pressed():

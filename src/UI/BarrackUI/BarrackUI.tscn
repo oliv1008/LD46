@@ -7,7 +7,7 @@
 [ext_resource path="res://src/UI/ListUI/ListMonsterBarrackUI/ListMonsterBarrackUI.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/Cave-Story.ttf" type="DynamicFontData" id=11]
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=1]
 size = 32
 font_data = ExtResource( 11 )
 
@@ -47,7 +47,7 @@ margin_left = 25.4583
 margin_top = 2.0
 margin_right = 399.458
 margin_bottom = 27.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 1 )
 text = "AVAILABLE / POSSESSED / MAX"
 align = 1
 valign = 1
@@ -138,18 +138,19 @@ margin_bottom = -5.0
 alignment = 1
 
 [node name="TextUpgrade" type="Label" parent="TabContainer/Upgrade"]
-margin_top = 5.0
 margin_right = 431.0
-margin_bottom = 117.0
-text = "If you upgrade this building, you can build one more weapon, allowing you to have one more soldier. However, the cost increases every time you upgrade the building."
+margin_bottom = 135.0
+text = "By upgrading this building, you can build one more weapon, allowing you to have one more soldier.
+
+The cost increases with every upgrade."
 align = 3
 valign = 3
 autowrap = true
 
 [node name="UpgradeCostLabel" type="RichTextLabel" parent="TabContainer/Upgrade"]
-margin_top = 121.0
+margin_top = 139.0
 margin_right = 431.0
-margin_bottom = 171.0
+margin_bottom = 189.0
 rect_min_size = Vector2( 50, 50 )
 bbcode_enabled = true
 bbcode_text = "azeaze"
@@ -157,9 +158,9 @@ text = "azeaze"
 
 [node name="ButtonUpgrade" type="Button" parent="TabContainer/Upgrade"]
 margin_left = 165.0
-margin_top = 175.0
+margin_top = 193.0
 margin_right = 265.0
-margin_bottom = 199.0
+margin_bottom = 217.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Upgrade"
