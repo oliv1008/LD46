@@ -10,8 +10,8 @@ var food_needed_per_tick = 4
 var food_needed_per_person = 0.5
 
 var current_wave_level = 0
-var current_time_before_next_wave = 60
-var time_before_next_wave = [1500, 10, 10, 10, 10]
+var current_time_before_next_wave = 120
+var time_before_next_wave = [120, 90, 60, 45, 30]
 var number_of_mobs_per_wave = [1, 2, 2, 3, 3]
 
 onready var lab = $Lab
@@ -19,7 +19,6 @@ onready var lab = $Lab
 export (PackedScene) var ennemy
 
 func _ready():
-	SoundManager.play_bgm("Animal crossing.wav")
 	Events.connect("new_ressources_generator", self, "add_ressources_per_tick")
 	Events.connect("delete_ressources_generator", self, "delete_ressources_per_tick") 
 	Events.connect("new_monster", self, "on_new_monster")
@@ -35,8 +34,9 @@ func _physics_process(delta):
 		$MonsterUI.visible = false
 	if Input.is_action_pressed("ui_cancel"):
 		on_pause_pressed()
-		
-		
+	if SoundManager.is_bgm_playing("Animal crossing.wav") == false:
+		SoundManager.play_bgm("Animal crossing.wav")
+
 func on_pause_pressed():
 	get_tree().paused = true
 	$HpDecay.paused = true

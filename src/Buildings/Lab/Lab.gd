@@ -59,6 +59,7 @@ func _on_ButtonBuild_pressed():
 	
 func _on_Area2D_input_event(_viewport, event, _shape_idx):
 	if (is_build && event is InputEventMouseButton && event.pressed):
+		SoundManager.play_se("lab_sound.wav")
 		if (Data.selected == null):
 			UI.visible = true
 		

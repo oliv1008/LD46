@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/caserne_et_au_combat.wav-582bfb0444d55eec8a23ab5c8cbb673f.sample"
+
+[deps]
+
+source_file="res://assets/sounds/Sound effects/caserne_et_au_combat.wav"
+dest_files=[ "res://.import/caserne_et_au_combat.wav-582bfb0444d55eec8a23ab5c8cbb673f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
