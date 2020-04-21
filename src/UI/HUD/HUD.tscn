@@ -151,11 +151,11 @@ __meta__ = {
 }
 
 [node name="Icon" type="TextureRect" parent="."]
-margin_left = 1613.84
-margin_top = -2.78955
-margin_right = 1703.84
-margin_bottom = 87.2105
-rect_scale = Vector2( 1.2, 1.2 )
+margin_left = 1616.0
+margin_top = 3.0
+margin_right = 1641.0
+margin_bottom = 28.0
+rect_scale = Vector2( 3, 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

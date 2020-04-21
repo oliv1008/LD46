@@ -8,6 +8,7 @@ var food_harvest_speed = 1
 var bone_harvest_speed = 1
 var soldier_damage = 1
 
+var lab_button_disabling = false
 
 var upgrade_levels = {
 	"wood_harvest" : 1,

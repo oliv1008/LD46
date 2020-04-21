@@ -47,8 +47,9 @@ func enter(user_param):
 	user_param.isMoving = false
 	monsters_stand_by.append(user_param)
 	fuck_value += user_param.fucker_multiplier
-	user_param.position = Vector2(0, 0)
+	#user_param.position = Vector2(0, 0)
 	user_param.visible = false
+	user_param.get_node("Hitbox").disabled = true
 	UI.reload_monster_list()
 
 func leave(_user_param):
@@ -60,6 +61,7 @@ func leave(_user_param):
 	fuck_value -= _user_param.fucker_multiplier
 	_user_param.position = $ExitPosition.global_position
 	_user_param.visible = true
+	_user_param.get_node("Hitbox").disabled = false
 
 func on_monster_leave(user_param):
 	UI.on_monster_leave(user_param)

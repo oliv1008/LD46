@@ -8,6 +8,7 @@ var monsters_stand_by = []
 var max_monsters_quantity = 1
 
 var research_value = 0
+var ameliorated_sprite = preload("res://assets/Graphics/batiments/laboratoire upgrade.png")
 
 export (int) var price_to_build = 1
 
@@ -26,13 +27,16 @@ func _on_ressources_values_changed(type, new_value):
 			$ButtonBuild.disabled = true
 
 func upgrade():
-	pass
+	max_monsters_quantity += 1
+	$Sprite.texture = ameliorated_sprite
+	$Sprite2.texture = ameliorated_sprite
 	
 func enter(user_param):
 	monsters_stand_by.append(user_param)
 	research_value += user_param.scientist_multiplier
-	user_param.position = Vector2(0, 0)
+	#user_param.position = Vector2(0, 0)
 	user_param.visible = false
+	user_param.get_node("Hitbox").disabled = false
 	UI.reload_monster_list()
 
 func leave(_user_param):
@@ -41,6 +45,7 @@ func leave(_user_param):
 
 	_user_param.position = $ExitPosition.global_position
 	_user_param.visible = true
+	_user_param.get_node("Hitbox").disabled = false
 
 func on_monster_leave(user_param):
 	UI.on_monster_leave(user_param)

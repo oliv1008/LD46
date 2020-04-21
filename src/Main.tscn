@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://src/Main.gd" type="Script" id=1]
 [ext_resource path="res://src/Buildings/Tree/Tree.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://src/Trees.gd" type="Script" id=11]
 [ext_resource path="res://src/Bones.gd" type="Script" id=12]
 [ext_resource path="res://src/Ennemies/TrashEnnemy.tscn" type="PackedScene" id=13]
+[ext_resource path="res://src/UI/HUD/pause_popup.tscn" type="PackedScene" id=14]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
@@ -144,8 +145,13 @@ margin_left = 13.9476
 margin_top = 736.43
 margin_right = 629.948
 margin_bottom = 1064.43
+
+[node name="pause_popup" parent="." instance=ExtResource( 14 )]
+visible = false
 [connection signal="timeout" from="HpDecay" to="." method="_on_HpDecay_timeout"]
 [connection signal="timeout" from="FoodTimer" to="." method="_on_FoodTimer_timeout"]
 [connection signal="timeout" from="TimerNextWave" to="." method="_on_TimerNextWave_timeout"]
 [connection signal="timeout" from="MaterialTimer" to="." method="_on_MaterialTimer_timeout"]
 [connection signal="timeout" from="SpawnEnnemyTimer" to="." method="_on_SpawnEnnemyTimer_timeout"]
+
+[editable path="pause_popup"]
