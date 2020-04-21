@@ -68,10 +68,13 @@ custom_constants/separation = 30
 alignment = 1
 
 [node name="TextUpgrade" type="Label" parent="TabContainer/Upgrade"]
+margin_left = 5.0
 margin_top = 21.0
-margin_right = 545.0
+margin_right = 533.0
 margin_bottom = 133.0
-text = "If you upgrade this building, you can put 1 more scientist in the building, increasing the speed at which you can research ! However, the upgrade cost is higher every time your upgrade..."
+text = "By upgrading this building, you can put 1 more scientist in the building, increasing the speed at which you can research 
+
+ The cost increases with every upgrade."
 align = 3
 valign = 3
 autowrap = true

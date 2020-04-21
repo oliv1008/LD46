@@ -29,3 +29,7 @@ signal new_next_wave_value(value)
 
 enum RessourcesType {food, bone}
 enum WeaponChoices {SPEAR}
+
+#DIDACTICIEL VALUES
+
+signal button_mate_pressed

@@ -30,6 +30,9 @@ func _on_ressources_values_changed(type, new_value):
 
 func _on_ButtonBuild_pressed():
 	Events.emit_signal("use_bones", price_to_build)
+	build()
+	
+func build():
 	$Sprite.self_modulate = Color(1, 1, 1, 1)
 	$ButtonBuild.visible = false
 	is_build = true
@@ -40,6 +43,7 @@ func upgrade():
 
 func mate():
 	if monsters_stand_by.size() == 2:
+		Events.emit_signal("button_mate_pressed")
 		if $Procreation.is_stopped():
 			$Procreation.start()
 
@@ -88,7 +92,6 @@ func _on_Procreation_timeout():
 		var new_monster = baby_monster.instance()
 		new_monster.position = $ExitPosition.global_position
 		get_owner().add_child(new_monster)
-		get_owner().move_child($new_monster, get_index()+2)
 		actual_procreation = 0
 	UI.mate_button.text = str(actual_procreation, "/", time_needed_to_procreate)
 

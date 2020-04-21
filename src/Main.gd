@@ -15,6 +15,8 @@ var time_before_next_wave = [120, 90, 60, 45, 30]
 var number_of_mobs_per_wave = [1, 2, 2, 3, 3]
 
 onready var lab = $Lab
+export (PackedScene) var VictoryScreen
+export (PackedScene) var LooseScreen
 
 export (PackedScene) var ennemy
 
@@ -32,6 +34,12 @@ func _physics_process(delta):
 		$MonsterUI.visible = true
 	else:
 		$MonsterUI.visible = false
+		
+	if Data.monster_list.size() >= 20:
+		get_tree().change_scene_to(VictoryScreen)
+	elif Data.monster_list.size() <= 0:
+		get_tree().change_scene_to(LooseScreen)
+
 	if Input.is_action_pressed("ui_cancel"):
 		on_pause_pressed()
 	if SoundManager.is_bgm_playing("Animal crossing.wav") == false:

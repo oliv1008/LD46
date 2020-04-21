@@ -207,6 +207,7 @@ scale = Vector2( 4, 4 )
 texture = ExtResource( 5 )
 
 [node name="SoldierIcon" type="Sprite" parent="."]
+visible = false
 position = Vector2( 0, -60 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 14 )
