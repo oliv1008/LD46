@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/Graphics/Theme/theme_basic.tres" type="Theme" id=1]
+[ext_resource path="res://assets/CaveStory78.tres" type="DynamicFont" id=2]
+[ext_resource path="res://src/UI/VictoryScreen/VictoryScreen.gd" type="Script" id=3]
+
+[node name="VictoryScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+margin_right = 1920.0
+margin_bottom = 1080.0
+
+[node name="Label" type="Label" parent="."]
+margin_left = 634.587
+margin_top = 328.77
+margin_right = 1351.59
+margin_bottom = 377.77
+custom_fonts/font = ExtResource( 2 )
+text = "Congratulations, you won !"
+
+[node name="ButtonWhatsNext" type="Button" parent="."]
+margin_left = 788.662
+margin_top = 684.592
+margin_right = 1149.66
+margin_bottom = 737.592
+custom_fonts/font = ExtResource( 2 )
+text = "What's next ?"
+[connection signal="pressed" from="ButtonWhatsNext" to="." method="_on_ButtonWhatsNext_pressed"]

@@ -15,6 +15,8 @@ var time_before_next_wave = [15, 10, 10, 10, 10]
 var number_of_mobs_per_wave = [1, 2, 2, 3, 3]
 
 onready var lab = $Lab
+export (PackedScene) var VictoryScreen
+export (PackedScene) var LooseScreen
 
 export (PackedScene) var ennemy
 
@@ -33,6 +35,11 @@ func _physics_process(delta):
 		$MonsterUI.visible = true
 	else:
 		$MonsterUI.visible = false
+		
+	if Data.monster_list.size() >= 20:
+		get_tree().change_scene_to(VictoryScreen)
+	elif Data.monster_list.size() <= 0:
+		get_tree().change_scene_to(LooseScreen)
 
 func add_ressources_per_tick(type: int, user):
 	if (type == Events.RessourcesType.food):

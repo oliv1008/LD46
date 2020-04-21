@@ -243,15 +243,15 @@ func get_hit(damage):
 		animationPlayer.play("die")
 
 func die():
-	#for ennemy in cibled_by:
-	#	ennemy.clear_cibled_by(self)
-	#	ennemy.nouvelle_cible()
+	is_a_soldier = false
 	Events.emit_signal("monster_death")
 	if activity != null:
 		activity.on_monster_leave(self)
 	Data.monster_list.remove(Data.monster_list.find(self))
 	if Data.selected == self:
 		Data.selected = null
+	self.visible = false
+	self.damage = 0
 	queue_free()
 
 func clear_cibled_by(ennemy):

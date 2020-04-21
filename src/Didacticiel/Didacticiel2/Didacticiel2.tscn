@@ -1,0 +1,91 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://src/Monster/Monster.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/Didacticiel/Didacticiel2/Didacticiel2.gd" type="Script" id=2]
+[ext_resource path="res://assets/Graphics/Map PS.png" type="Texture" id=3]
+[ext_resource path="res://src/UI/MonsterUI/MonsterUI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/Buildings/Nest/Nest.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/UI/HUD/HUD.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/Didacticiel/PopUpUI/PopUpUI.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/Buildings/Bone/Bone.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/Buildings/Lab/Lab.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/Buildings/Tree/Tree.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/Buildings/Barrack/Barrack.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/Graphics/Theme/theme_basic.tres" type="Theme" id=12]
+[ext_resource path="res://src/Main.tscn" type="PackedScene" id=13]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 2 )
+Main = ExtResource( 13 )
+
+[node name="Map" type="Sprite" parent="."]
+scale = Vector2( 4, 4 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Tree" parent="." instance=ExtResource( 10 )]
+position = Vector2( 403.439, 338.368 )
+
+[node name="Nest" parent="." instance=ExtResource( 5 )]
+position = Vector2( 650.075, 624.075 )
+
+[node name="Bone" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1545.43, 774.343 )
+
+[node name="Barrack" parent="." instance=ExtResource( 11 )]
+visible = false
+position = Vector2( 965.937, 291.518 )
+
+[node name="Monster" parent="." instance=ExtResource( 1 )]
+position = Vector2( 700.153, 788.447 )
+
+[node name="Monster2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 534.657, 768.109 )
+
+[node name="Monster3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 437.787, 654.537 )
+
+[node name="Lab" parent="." instance=ExtResource( 9 )]
+visible = false
+position = Vector2( 1089.59, 614.97 )
+
+[node name="PopUpUI" parent="." instance=ExtResource( 7 )]
+margin_left = 871.146
+margin_top = 191.733
+margin_right = 871.146
+margin_bottom = 191.733
+
+[node name="ButtonLetsGo" type="Button" parent="."]
+visible = false
+margin_left = 1217.08
+margin_top = 927.752
+margin_right = 1602.08
+margin_bottom = 1046.75
+theme = ExtResource( 12 )
+text = "LET'S GO"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MonsterUI" parent="." instance=ExtResource( 4 )]
+visible = false
+margin_left = 13.9476
+margin_top = 736.43
+margin_right = 629.948
+margin_bottom = 1064.43
+
+[node name="HUD" parent="." instance=ExtResource( 6 )]
+margin_bottom = 0.0
+
+[node name="HpDecay" type="Timer" parent="."]
+autostart = true
+
+[node name="FoodTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="MaterialTimer" type="Timer" parent="."]
+autostart = true
+[connection signal="pressed" from="ButtonLetsGo" to="." method="_on_ButtonLetsGo_pressed"]
+[connection signal="timeout" from="HpDecay" to="." method="_on_HpDecay_timeout"]
+[connection signal="timeout" from="FoodTimer" to="." method="_on_FoodTimer_timeout"]
+[connection signal="timeout" from="MaterialTimer" to="." method="_on_MaterialTimer_timeout"]

@@ -47,6 +47,9 @@ func on_monster_leave(user_param):
 
 func _on_ButtonBuild_pressed():
 	Events.emit_signal("use_bones", price_to_build)
+	build()
+	
+func build():
 	$Sprite.self_modulate = Color(1, 1, 1, 1)
 	$ButtonBuild.visible = false
 	is_build = true
