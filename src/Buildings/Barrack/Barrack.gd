@@ -12,6 +12,7 @@ var current_weapon_quantity: int = 0
 var number_of_weapon_possessed: int = 0
 
 export (int) var price_to_build = 1
+var ameliorated_sprite = preload("res://assets/Graphics/batiments/caserne update.png")
 
 func _ready():
 	$ButtonBuild.text = str("BUILD (", price_to_build, " bones)")
@@ -32,7 +33,8 @@ func enter(user_param):
 	user_param.is_a_soldier = true
 	user_param.pos_casern = $ExitPosition.global_position
 	monsters_stand_by.append(user_param)
-	user_param.position = Vector2(0, 0)
+	#user_param.position = Vector2(0, 0)
+	user_param.get_node("Hitbox").disabled = true
 	user_param.visible = false
 	UI.reload_monster_list()
 	if Data.ennemy_list.size() != 0:
@@ -45,6 +47,7 @@ func leave(_user_param):
 	monsters_stand_by.remove(monsters_stand_by.find(_user_param))
 	_user_param.position = $ExitPosition.global_position
 	_user_param.visible = true
+	_user_param.get_node("Hitbox").disabled = false
 
 func go_battle():
 	var compteur = 0
@@ -59,12 +62,18 @@ func go_battle():
 		monster.isMoving = true
 		monster.combat = false
 		monster.isAttacking = false
+		monster.get_node("Hitbox").disabled = false
 		compteur += 1
 
 func go_home():
 	for monster in monsters_stand_by:
 		monster.get_node("AnimatedSprite").rotation_degrees = 0
 		monster.go_to_casern = true
+
+func upgrade():
+	max_weapon_quantity += 1
+	$Sprite.texture = ameliorated_sprite
+	$Sprite2.texture = ameliorated_sprite
 
 func on_monster_leave(user_param):
 	UI.on_monster_leave(user_param)

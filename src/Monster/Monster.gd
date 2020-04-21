@@ -65,7 +65,7 @@ func _physics_process(delta):
 				currentPos = position
 				batPosition = activity.position
 				posToMove = batPosition - currentPos
-				if abs(posToMove.x) > 5 || abs(posToMove.y) > 5:
+				if abs(posToMove.x) > 60 || abs(posToMove.y) > 60:
 					var angle = posToMove.normalized()
 					velocity = posToMove.normalized() * speed
 					move_and_slide(velocity, Vector2(0, 0))
@@ -124,7 +124,8 @@ func _physics_process(delta):
 					go_down()
 			else:
 				go_to_casern = false
-				self.position = Vector2(0, 0)
+				#self.position = Vector2(0, 0)
+				self.get_node("Hitbox").disabled = false
 				self.visible = false
 
 	$Hovering.texture = $AnimatedSprite.frames.get_frame("default", $AnimatedSprite.frame)

@@ -7,8 +7,8 @@
 [node name="ListMonsterLabUI" type="HBoxContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -1522.0
-margin_bottom = -1000.0
+margin_right = -1510.0
+margin_bottom = -996.0
 theme = ExtResource( 3 )
 custom_constants/separation = 50
 script = ExtResource( 1 )
@@ -18,7 +18,7 @@ __meta__ = {
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_right = 80.0
-margin_bottom = 80.0
+margin_bottom = 84.0
 rect_min_size = Vector2( 80, 80 )
 stretch_mode = 5
 __meta__ = {
@@ -28,37 +28,35 @@ __meta__ = {
 [node name="LabelContainer" type="VBoxContainer" parent="."]
 margin_left = 130.0
 margin_right = 308.0
-margin_bottom = 80.0
-custom_constants/separation = 14
-alignment = 1
+margin_bottom = 84.0
+custom_constants/separation = 10
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="NameLabel" type="Label" parent="LabelContainer"]
-margin_top = 6.0
 margin_right = 178.0
-margin_bottom = 26.0
+margin_bottom = 20.0
 text = "NOMNOM"
 
 [node name="ScientistLvlLabel" type="Label" parent="LabelContainer"]
-margin_top = 40.0
+margin_top = 30.0
 margin_right = 178.0
-margin_bottom = 60.0
+margin_bottom = 50.0
 text = "Scientist lvl. XX"
 
 [node name="Hp bar" parent="LabelContainer" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 74.0
+margin_top = 60.0
 margin_right = 178.0
-margin_bottom = 74.0
+margin_bottom = 60.0
 
 [node name="LeaveButton" type="Button" parent="."]
 margin_left = 358.0
-margin_top = 28.0
+margin_top = 30.0
 margin_right = 410.0
-margin_bottom = 52.0
+margin_bottom = 54.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Kick"

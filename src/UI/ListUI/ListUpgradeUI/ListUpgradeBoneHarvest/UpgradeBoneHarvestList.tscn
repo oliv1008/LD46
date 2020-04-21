@@ -70,10 +70,9 @@ margin_bottom = 40.0
 text = "Cost:"
 
 [node name="CostLabel" type="RichTextLabel" parent="VBoxContainer2/HBoxContainer"]
-margin_left = 63.0
-margin_top = -1.0
-margin_right = 163.0
-margin_bottom = 59.0
+margin_left = 64.0
+margin_right = 164.0
+margin_bottom = 60.0
 rect_min_size = Vector2( 100, 60 )
 size_flags_horizontal = 4
 size_flags_vertical = 4

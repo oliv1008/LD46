@@ -1,7 +1,12 @@
 extends Control
 
 onready var research_list = $TabContainer/Research/VBoxContainer
-onready var scientists_list = $TabContainer/Scientists
+onready var scientists_list = $TabContainer/Scientists/VBoxContainer
+
+export (int) var initial_upgrade_cost = 50
+var upgrade_cost = 50
+var level = 1
+
 
 var DictionaryListUpgradesUI = {
 	"wood_harvest" : preload("res://src/UI/ListUI/ListUpgradeUI/ListUpgradeWoodHarvestUI/UpgradeWoodHarvestList.tscn"),
@@ -24,11 +29,20 @@ func _ready():
 func init(lab_param):
 	lab = lab_param
 	rect_position = lab_param.get_node("PositionUI").position
+	Events.connect("new_ressources_value", self, "_on_ressources_values_changed")
+	$TabContainer/Upgrade/UpgradeCostLabel.bbcode_text = str("cost :", upgrade_cost, " [img]res://assets/Graphics/Icon/Icon os ps25.png[/img]")
 	reload_upgrade_list()
 
 func on_monster_leave(monster):
 	monster.changeActivity(null)
 	reload_monster_list()
+
+func _on_ressources_values_changed(type, new_value):
+	if (type == Events.RessourcesType.bone):
+		if new_value >= upgrade_cost:
+			$TabContainer/Upgrade/ButtonUpgrade.disabled = false
+		else:
+			$TabContainer/Upgrade/ButtonUpgrade.disabled = true
 
 func reload_monster_list():
 	for monster_info in scientists_list.get_children():
@@ -73,6 +87,10 @@ func _on_close_pressed():
 
 func _on_ButtonUpgrade_pressed():
 	if lab != null:
+		Events.emit_signal("use_bones", upgrade_cost)
+		level += 1
+		upgrade_cost += initial_upgrade_cost
+		$TabContainer/Upgrade/UpgradeCostLabel.bbcode_text = str("cost :", upgrade_cost, " [img]res://assets/Graphics/Icon/Icon os ps25.png[/img]")
 		lab.upgrade()
 
 func _on_TabContainer_tab_changed(tab: int):

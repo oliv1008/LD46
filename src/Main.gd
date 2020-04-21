@@ -10,8 +10,8 @@ var food_needed_per_tick = 4
 var food_needed_per_person = 0.5
 
 var current_wave_level = 0
-var current_time_before_next_wave = 15
-var time_before_next_wave = [15, 10, 10, 10, 10]
+var current_time_before_next_wave = 60
+var time_before_next_wave = [1500, 10, 10, 10, 10]
 var number_of_mobs_per_wave = [1, 2, 2, 3, 3]
 
 onready var lab = $Lab
@@ -40,6 +40,26 @@ func _physics_process(delta):
 		get_tree().change_scene_to(VictoryScreen)
 	elif Data.monster_list.size() <= 0:
 		get_tree().change_scene_to(LooseScreen)
+
+	if Input.is_action_pressed("ui_cancel"):
+		on_pause_pressed()
+		
+		
+func on_pause_pressed():
+	get_tree().paused = true
+	$HpDecay.paused = true
+	$FoodTimer.paused = true
+	$TimerNextWave.paused = true
+	$MaterialTimer.paused = true
+	$pause_popup.show()
+
+func on_resume():
+	get_tree().paused = false
+	$HpDecay.paused = false
+	$FoodTimer.paused = false
+	$TimerNextWave.paused = false
+	$MaterialTimer.paused = false
+	$pause_popup.hide()
 
 func add_ressources_per_tick(type: int, user):
 	if (type == Events.RessourcesType.food):

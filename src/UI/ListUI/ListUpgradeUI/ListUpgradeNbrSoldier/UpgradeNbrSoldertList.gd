@@ -9,8 +9,6 @@ export (int) var initial_research_cost = 30
 var cost
 var research_cost
 
-var disabling = false
-
 signal upgrade_selected(type, upgrade)
 
 func init(level):
@@ -23,17 +21,17 @@ func init(level):
 	
 func _on_ressources_values_changed(type, new_value):
 	if (type == Events.RessourcesType.bone):
-		if new_value >= cost && disabling == false:
+		if new_value >= cost && Data.lab_button_disabling == false:
 			research_button.disabled = false
 		else:
 			research_button.disabled = true
 
 func on_disable_lab_button():
-	disabling = true
+	Data.lab_button_disabling = true
 	research_button.disabled = true
 
 func on_enable_lab_button():
-	disabling = false
+	Data.lab_button_disabling = false
 	research_button.disabled = false
 
 func _on_ResearchButton_pressed():

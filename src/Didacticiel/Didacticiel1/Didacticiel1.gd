@@ -7,7 +7,7 @@ onready var popup_ui = $PopUpUI
 
 var first_popup_text = ["Hello ! Welcome to MitosiVilization !\nYour goal in this game will be to help a colony of bacteria to grow and protect them from extinction !\nLet's start by quickly walking you through the basics.", 
 						"The building you're seeing here is the nest. It is used by your bacterias to reproduce.\nYou can click on your bacterias and then on the nest to send them inside.\nOnce you've done that, click on the nest to open the nest menu and start the mating process !"]
-var second_popup_text = ["Congratulations, a new bacteria is on the way !\nBut be wary ! Each bacteria need food in order to survive, make sure your food production is greater than the food needs of your colony, or they risk starving to death ...\nSince the mating process is a little bit long we're gonna speed things a bit here, click \"next\" when you're ready"]
+var second_popup_text = ["Congratulations, a new bacteria is on the way !\nBut be wary ! Each bacteria needs food in order to survive, make sure your food production is greater than the food needs of your colony, or they risk starving to death ...\nSince the mating process is a little bit long we're gonna speed things a bit here, click \"next\" when you're ready."]
 
 enum Steps {FIRST_POPUP, MATE, SECOND_POPUP}
 var current_step = Steps.FIRST_POPUP

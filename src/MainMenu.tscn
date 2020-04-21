@@ -1,0 +1,64 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://assets/Graphics/start button.png" type="Texture" id=1]
+[ext_resource path="res://assets/Graphics/exit button.png" type="Texture" id=2]
+[ext_resource path="res://assets/Graphics/Logo.png" type="Texture" id=3]
+[ext_resource path="res://assets/Graphics/Cuisine.png" type="Texture" id=4]
+[ext_resource path="res://src/MainMenu.gd" type="Script" id=5]
+[ext_resource path="res://assets/Graphics/start button2.png" type="Texture" id=6]
+[ext_resource path="res://assets/Graphics/start button1.png" type="Texture" id=7]
+[ext_resource path="res://assets/Graphics/exit button1.png" type="Texture" id=8]
+[ext_resource path="res://assets/Graphics/exit button 2.png" type="Texture" id=9]
+[ext_resource path="res://assets/sounds/Intro_LD46.webm" type="VideoStream" id=10]
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VideoPlayer" type="VideoPlayer" parent="."]
+margin_right = 480.0
+margin_bottom = 270.0
+rect_scale = Vector2( 4, 4 )
+stream = ExtResource( 10 )
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 959.878, 539.905 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 4 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 976.299, 280 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 3 )
+
+[node name="Start" type="TextureButton" parent="."]
+margin_left = 691.032
+margin_top = 561.653
+margin_right = 823.032
+margin_bottom = 604.653
+rect_scale = Vector2( 4, 4 )
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Exit" type="TextureButton" parent="."]
+margin_left = 696.457
+margin_top = 816.589
+margin_right = 828.457
+margin_bottom = 859.589
+rect_scale = Vector2( 4, 4 )
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_Exit_pressed"]

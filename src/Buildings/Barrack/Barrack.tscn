@@ -25,10 +25,10 @@ scale = Vector2( 4, 4 )
 texture = ExtResource( 1 )
 
 [node name="ButtonBuild" type="Button" parent="."]
-margin_left = -34.5831
-margin_top = -22.1548
-margin_right = 35.4169
-margin_bottom = 22.8452
+margin_left = -47.2176
+margin_top = 10.5802
+margin_right = 141.782
+margin_bottom = 34.5802
 theme = ExtResource( 4 )
 disabled = true
 text = "BUILD (1 bones)"

@@ -5,8 +5,8 @@ onready var number_bone = $BoneNumber
 onready var food_per_sec = $FoodPerSec
 onready var bone_per_sec = $BonePerSec
 onready var cost_per_sec = $CostPerSec
-var actual_food_per_sec
-var actual_bone_per_sec
+var actual_food_per_sec = 0
+var actual_bone_per_sec = 0
 
 func _ready():
 	$GottaEat.text = str("Your monsters gotta eat ! That's why each of them consumes ", Data.food_needed_per_person, " per sec.")
