@@ -21,7 +21,7 @@ var current_step = Steps.FIRST_POPUP
 export (PackedScene) var Main
 
 func _ready():
-	SoundManager.play_bgm("Animal crossing.wav")
+	#SoundManager.play_bgm("Animal crossing.wav")
 	$Nest.build()
 	$Tree.build()
 	$Bone.build()
@@ -75,6 +75,8 @@ func _physics_process(delta):
 		$MonsterUI.visible = true
 	else:
 		$MonsterUI.visible = false
+	if SoundManager.is_bgm_playing("Animal crossing.wav") == false:
+		SoundManager.play_bgm("Animal crossing.wav")
 		
 func _process(delta):
 	if food_per_tick > 0 && bone_per_tick > 0 && current_step == Steps.HARVEST:

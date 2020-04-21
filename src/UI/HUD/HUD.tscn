@@ -166,7 +166,7 @@ margin_top = 50.0
 margin_right = 547.066
 margin_bottom = 76.0
 custom_fonts/font = ExtResource( 5 )
-text = "-2 per sec"
+text = "-0 per sec"
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false

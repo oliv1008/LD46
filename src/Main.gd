@@ -26,6 +26,7 @@ func _ready():
 	Events.connect("new_monster", self, "on_new_monster")
 	Events.connect("monster_death", self, "on_monster_death")
 	Events.connect("use_bones", self, "on_use_bones")
+	Events.emit_signal("new_food_needed_per_tick", food_needed_per_tick)
 	
 func _physics_process(delta):
 	if Data.selected != null:

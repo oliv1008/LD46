@@ -15,7 +15,7 @@ var current_step = Steps.FIRST_POPUP
 export (PackedScene) var Didacticiel2
 
 func _ready():
-	SoundManager.play_bgm("Animal crossing.wav")
+	#SoundManager.play_bgm("Animal crossing.wav")
 	Events.connect("new_monster", self, "on_new_monster")
 	$Nest.build()
 	get_tree().paused = true
@@ -53,6 +53,8 @@ func _physics_process(delta):
 		$MonsterUI.visible = true
 	else:
 		$MonsterUI.visible = false
+	if SoundManager.is_bgm_playing("Animal crossing.wav") == false:
+		SoundManager.play_bgm("Animal crossing.wav")
 
 func on_new_monster():
 	print("nouveau monstre !")

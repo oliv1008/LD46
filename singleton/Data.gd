@@ -10,6 +10,9 @@ var soldier_damage = 1
 
 var lab_button_disabling = false
 
+var price_to_build_bones = 1
+var price_to_build_trees = 1
+
 var upgrade_levels = {
 	"wood_harvest" : 1,
 	"bone_harvest" : 1,

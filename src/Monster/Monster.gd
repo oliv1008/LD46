@@ -222,7 +222,7 @@ func deal_damage():
 		closest_ennemy.get_hit(damage)
 		nouvelle_cible()
 		var floor_value = floor(soldier_level)
-		soldier_level += 0.02/floor_value
+		soldier_level += 0.10/floor_value
 		if floor(soldier_level) > floor_value:
 			levelup_soldier()
 

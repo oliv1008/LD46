@@ -9,7 +9,7 @@ var bones_sprites = [bone1, bone2]
 
 var is_build = false
 
-export (int) var price_to_build = 1
+#export (int) var price_to_build = 1
 
 signal bone_built
 
@@ -18,12 +18,15 @@ func _ready():
 	$Sprite.texture = bones_sprites[randi() % bones_sprites.size()] 
 	$Sprite2.texture = $Sprite.texture
 	$Sprite2.modulate = Color(255,255,255,0.5)
-	$ButtonBuild.text = str("BUILD (", price_to_build, " bones)")
+	$ButtonBuild.text = str("BUILD (", Data.price_to_build_bones, " bones)")
 	Events.connect("new_ressources_value", self, "_on_ressources_values_changed")
+
+func _physics_process(delta):
+	$ButtonBuild.text = str("BUILD (", Data.price_to_build_bones, " bones)")
 	
 func _on_ressources_values_changed(type, new_value):
 	if (type == Events.RessourcesType.bone):
-		if new_value >= price_to_build:
+		if new_value >= Data.price_to_build_bones:
 			$ButtonBuild.disabled = false
 		else:
 			$ButtonBuild.disabled = true
@@ -77,8 +80,8 @@ func _on_Stop_effect_timeout():
 	SoundManager.stop_se("Mining.ogg")
 
 func _on_ButtonBuild_pressed():
-	Events.emit_signal("use_bones", price_to_build)
-	price_to_build += 10
+	Events.emit_signal("use_bones", Data.price_to_build_bones)
+	Data.price_to_build_bones += 10
 	build()
 
 func build():
