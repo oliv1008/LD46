@@ -3,7 +3,7 @@ extends KinematicBody2D
 var random02 = [0, 0.2, 0.4, 0.6, 0.8, 1.0]
 var names = ["Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Golf", "Hotel", "India", "Juliett", "Kilo", "Lima", "Mike", "November", "Oscar", "Papa", "Quebec", "Romeo", "Sierra", "Tango", "Uniform", "Victor", "Whiskey", "Xray", "Yankee", "Zulu"]
 
-export var speed = 450 #(pixels/sec)
+export var speed = 200 #(pixels/sec)
 
 export (int) var hp = 100
 
@@ -44,7 +44,7 @@ var go_to_casern = false
 var pos_casern = Vector2(0, 0)
 
 var damage = 0
-export (int) var base_damage = 40
+export (int) var base_damage = 20
 
 func _ready():
 	randomize()

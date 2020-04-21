@@ -78,6 +78,7 @@ func _on_Stop_effect_timeout():
 
 func _on_ButtonBuild_pressed():
 	Events.emit_signal("use_bones", price_to_build)
+	price_to_build += 10
 	build()
 
 func build():

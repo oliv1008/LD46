@@ -66,7 +66,7 @@ func _on_ButtonLetsGo_pressed():
 	$ButtonLetsGo.visible = false
 	get_tree().paused = true
 	$Declaration.visible = true
-	$ButtonMain.visible = false
+	$ButtonMain.visible = true
 	
 func _physics_process(delta):
 	if Data.selected != null:
